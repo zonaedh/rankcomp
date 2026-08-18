@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+@theme {
+  --color-coral-50: #fef4ee;
+  --color-coral-100: #fde6d7;
+  --color-coral-200: #fbcaad;
+  --color-coral-300: #f8a479;
+  --color-coral-400: #f58458;
+  --color-coral-500: #f0511f;
+  --color-coral-600: #e23814;
+  --color-coral-700: #bb2713;
+  --color-coral-800: #952117;
+  --color-coral-900: #781e16;
+  --color-coral-950: #410c09;
+
+  --color-obsidian-950: #080605;
+  --color-obsidian-900: #0c0a09;
+  --color-obsidian-850: #120e0c;
+  --color-obsidian-800: #181412;
+  --color-obsidian-750: #201a17;
+  --color-obsidian-700: #2a221e;
+}
+
+@layer base {
+  :root {
+    --bg-base: #FAF8F6;
+    --surface: #FFFFFF;
+    --surface-hover: #FFFDFD;
+    --surface-subtle: #FAF8F6;
+    --surface-card: #FFFFFF;
+
+    --text-primary: #1E1715;
+    --text-secondary: #5C4A45;
+    --text-subtle: #8F7B76;
+
+    --border-theme: #F3E6DF;
+    --border-hover: #FBCAAD;
+    --border-accent: #FBCAAD;
+
+    --highlight-bg: #FEF4EE;
+    --highlight-border: #FBCAAD;
+    --highlight-text: #781E16;
+
+    --nav-bg: rgba(250, 248, 246, 0.88);
+    --card-shadow: 0 4px 20px -2px rgba(120, 30, 22, 0.05), 0 2px 6px -1px rgba(240, 81, 31, 0.03);
+    --card-shadow-hover: 0 12px 30px -4px rgba(240, 81, 31, 0.12), 0 4px 10px -2px rgba(120, 30, 22, 0.05);
+
+    --grid-line: rgba(240, 81, 31, 0.06);
+  }
+
+  .dark {
+    --bg-base: #0C0A09;
+    --surface: #14110F;
+    --surface-hover: #1A1613;
+    --surface-subtle: #1C1715;
+    --surface-card: #161210;
+
+    --text-primary: #FBF9F8;
+    --text-secondary: #C4B5B0;
+    --text-subtle: #8F7B76;
+
+    --border-theme: rgba(255, 255, 255, 0.09);
+    --border-hover: rgba(240, 81, 31, 0.5);
+    --border-accent: rgba(240, 81, 31, 0.3);
+
+    --highlight-bg: rgba(240, 81, 31, 0.12);
+    --highlight-border: rgba(240, 81, 31, 0.35);
+    --highlight-text: #FBCAAD;
+
+    --nav-bg: rgba(12, 10, 9, 0.88);
+    --card-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.6), 0 2px 8px -1px rgba(240, 81, 31, 0.05);
+    --card-shadow-hover: 0 16px 36px -4px rgba(0, 0, 0, 0.8), 0 4px 16px -2px rgba(240, 81, 31, 0.25);
+
+    --grid-line: rgba(240, 81, 31, 0.09);
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat), system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom Semantic Helper Classes for Ultra-Crisp Dark/Light Modes */
+.bg-theme-base {
+  background-color: var(--bg-base);
+}
+
+.bg-theme-surface {
+  background-color: var(--surface);
+}
+
+.bg-theme-subtle {
+  background-color: var(--surface-subtle);
+}
+
+.bg-theme-card {
+  background-color: var(--surface-card);
+}
+
+.text-theme-primary {
+  color: var(--text-primary);
+}
+
+.text-theme-secondary {
+  color: var(--text-secondary);
+}
+
+.text-theme-subtle {
+  color: var(--text-subtle);
+}
+
+.border-theme {
+  border-color: var(--border-theme);
+}
+
+.border-theme-accent {
+  border-color: var(--border-accent);
+}
+
+.glass-panel {
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-theme);
+}
+
+.glass-card {
+  background: var(--surface-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-theme);
+  box-shadow: var(--card-shadow);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--border-hover);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #F0511F 0%, #F58458 50%, #FBCAAD 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #FBCAAD 0%, #F58458 50%, #F0511F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-coral {
+  background: linear-gradient(135deg, #781E16 0%, #BB2713 50%, #F0511F 100%);
+}
+
+.hero-glow {
+  background: radial-gradient(circle at 50% 30%, rgba(240, 81, 31, 0.18) 0%, rgba(120, 30, 22, 0.08) 45%, transparent 70%);
+}
+
+.modern-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+.modern-grid-mask {
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 38%, #000000 35%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 38%, #000000 35%, transparent 85%);
+}
+
+.dot-pattern {
+  background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Button pulse ripple animation in Coral */
+@keyframes subtle-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(240, 81, 31, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(240, 81, 31, 0);
+  }
+}
+
+.cta-pulse {
+  animation: subtle-pulse 3s infinite;
+}
