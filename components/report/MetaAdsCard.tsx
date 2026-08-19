@@ -18,7 +18,7 @@ export default function MetaAdsCard({ metaAds, delay = 0.1 }: MetaAdsCardProps) 
       title="Meta Ads Intelligence"
       subtitle="Facebook & Instagram Ad Library scan"
       delay={delay}
-      icon={<Megaphone className="w-5 h-5 text-[#E06859]" />}
+      icon={<Megaphone className="w-5 h-5 text-[#DA7735]" />}
       badge={
         <StatusBadge
           status={isRunning ? "running" : isPixelOnly ? "warning" : "not_running"}
@@ -36,7 +36,7 @@ export default function MetaAdsCard({ metaAds, delay = 0.1 }: MetaAdsCardProps) 
         {/* Scannable 2-Column Key Metrics Box */}
         <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-[var(--highlight-bg)] border border-[var(--highlight-border)]">
           <div className="space-y-1">
-            <div className="text-[11px] font-bold text-[#E06859] uppercase tracking-wider">
+            <div className="text-[11px] font-bold text-[#DA7735] uppercase tracking-wider">
               {isRunning ? "Active Creatives" : "Ad Library Status"}
             </div>
             <div className="text-2xl sm:text-3xl font-black font-heading text-[var(--text-primary)]">
@@ -51,7 +51,7 @@ export default function MetaAdsCard({ metaAds, delay = 0.1 }: MetaAdsCardProps) 
             <div className="text-[11px] font-bold text-[var(--text-secondary)] uppercase tracking-wider">
               Est. Monthly Spend
             </div>
-            <div className="text-base sm:text-lg font-black font-heading text-[#F28F82] mt-1">
+            <div className="text-base sm:text-lg font-black font-heading text-[#E7AD72] mt-1">
               {metaAds.estimatedMonthlySpend}
             </div>
             <div className="text-[11px] text-[var(--text-secondary)] font-medium">
@@ -64,7 +64,7 @@ export default function MetaAdsCard({ metaAds, delay = 0.1 }: MetaAdsCardProps) 
         {metaAds.pixelDetected && (
           <div className="p-3 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] flex items-center justify-between text-xs">
             <div className="flex items-center gap-2 text-[var(--text-primary)] font-semibold">
-              <ShieldCheck className="w-4 h-4 text-[#E06859]" />
+              <ShieldCheck className="w-4 h-4 text-[#DA7735]" />
               <span>
                 <strong>Meta Pixel:</strong> {isRunning ? "Installed & Actively Tracking" : "Installed (Audience Retargeting Only)"}
               </span>
@@ -81,10 +81,10 @@ export default function MetaAdsCard({ metaAds, delay = 0.1 }: MetaAdsCardProps) 
         <div className="space-y-2">
           <div className="text-xs font-semibold text-[var(--text-secondary)] flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <Layers className="w-3.5 h-3.5 text-[#E06859]" />
+              <Layers className="w-3.5 h-3.5 text-[#DA7735]" />
               <span>Observed Placements & Formats:</span>
             </span>
-            <span className="text-[11px] text-[#E06859] font-bold">
+            <span className="text-[11px] text-[#DA7735] font-bold">
               {metaAds.topFormats.length} Formats
             </span>
           </div>

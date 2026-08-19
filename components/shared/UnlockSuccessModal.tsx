@@ -27,7 +27,7 @@ export default function UnlockSuccessModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/80 backdrop-blur-md"
+          className="fixed inset-0 bg-black/85 backdrop-blur-md"
         />
 
         {/* Modal content */}
@@ -54,8 +54,8 @@ export default function UnlockSuccessModal({
             <CheckCircle2 className="w-9 h-9" />
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#FDA4AF] mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#E06859]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#E7AD72] mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#DA7735]" />
             <span>Dossier Dispatched & 1:1 Call Reserved</span>
           </div>
 
@@ -65,15 +65,15 @@ export default function UnlockSuccessModal({
 
           <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-2 leading-relaxed max-w-md mx-auto">
             Your full 18-page intelligence dossier for{" "}
-            <span className="font-semibold text-[#FDA4AF]">{domain}</span> has been dispatched to{" "}
+            <span className="font-semibold text-[#E7AD72]">{domain}</span> has been dispatched to{" "}
             <span className="font-semibold text-[var(--text-primary)]">{email}</span>.
           </p>
 
           {/* 1:1 Consultation VIP Box */}
           <div className="my-5 p-4 rounded-2xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] text-left space-y-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[var(--highlight-bg)] border border-[var(--highlight-border)] flex items-center justify-center text-[#E06859] shrink-0">
-                <Video className="w-5 h-5 text-[#E06859]" />
+              <div className="w-10 h-10 rounded-xl bg-[var(--highlight-bg)] border border-[var(--highlight-border)] flex items-center justify-center text-[#DA7735] shrink-0">
+                <Video className="w-5 h-5 text-[#DA7735]" />
               </div>
               <div className="min-w-0">
                 <div className="text-xs font-bold text-[var(--text-primary)] flex items-center gap-1.5">
@@ -90,24 +90,24 @@ export default function UnlockSuccessModal({
 
             <div className="pt-2 border-t border-[var(--border-theme)] flex items-center justify-between text-xs text-[var(--text-secondary)]">
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-[#E06859]" />
+                <Calendar className="w-3.5 h-3.5 text-[#DA7735]" />
                 <span>Private calendar link sent to your email</span>
               </span>
-              <span className="font-bold text-[#FDA4AF]">Check Inbox</span>
+              <span className="font-bold text-[#E7AD72]">Check Inbox</span>
             </div>
           </div>
 
           {/* Document Teaser Card */}
           <div className="p-3.5 rounded-2xl bg-[var(--surface)] border border-[var(--border-theme)] text-left flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] flex items-center justify-center text-[#E06859] shrink-0 shadow-xs">
-              <FileText className="w-5 h-5 text-[#E06859]" />
+            <div className="w-9 h-9 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] flex items-center justify-center text-[#DA7735] shrink-0 shadow-xs">
+              <FileText className="w-5 h-5 text-[#DA7735]" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold text-[var(--text-primary)] truncate">
                   {domain.replace(/\.[^/.]+$/, "")}_Full_Audit_Dossier.pdf
                 </span>
-                <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[var(--highlight-bg)] text-[#FDA4AF] border border-[var(--highlight-border)]">
+                <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[var(--highlight-bg)] text-[#E7AD72] border border-[var(--highlight-border)]">
                   18 Pages
                 </span>
               </div>
@@ -121,7 +121,7 @@ export default function UnlockSuccessModal({
           <div className="space-y-3 pt-5">
             <button
               onClick={onClose}
-              className="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-[#E06859] hover:bg-[#D4594A] shadow-md shadow-[#E06859]/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-[#DA7735] hover:bg-[#CC602A] shadow-md shadow-[#DA7735]/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Done & Continue Exploring</span>
               <ArrowRight className="w-4 h-4" />

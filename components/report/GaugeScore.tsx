@@ -27,15 +27,15 @@ export default function GaugeScore({
       };
     if (s >= 60)
       return {
-        color: "#F59E0B",
-        textClass: "text-amber-400",
-        bgClass: "bg-amber-500/10 border-amber-500/30",
+        color: "#E19456",
+        textClass: "text-[#E19456]",
+        bgClass: "bg-[#E19456]/10 border-[#E19456]/30",
         label: "Average",
       };
     return {
-      color: "#E06859",
-      textClass: "text-rose-400",
-      bgClass: "bg-rose-500/10 border-rose-500/30",
+      color: "#DA7735",
+      textClass: "text-[#DA7735]",
+      bgClass: "bg-[#DA7735]/10 border-[#DA7735]/30",
       label: "Slow",
     };
   };
@@ -81,9 +81,9 @@ export default function GaugeScore({
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--text-primary)]">
           {device === "mobile" ? (
-            <Smartphone className="w-3.5 h-3.5 text-[#E06859]" />
+            <Smartphone className="w-3.5 h-3.5 text-[#DA7735]" />
           ) : (
-            <Monitor className="w-3.5 h-3.5 text-[#E06859]" />
+            <Monitor className="w-3.5 h-3.5 text-[#DA7735]" />
           )}
           <span>{device === "mobile" ? "Mobile Performance" : "Desktop Performance"}</span>
         </div>

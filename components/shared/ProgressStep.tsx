@@ -32,8 +32,8 @@ export default function ProgressStep({
             <CheckCircle2 className="w-5 h-5 stroke-[2.5]" />
           </motion.div>
         ) : state === "active" ? (
-          <div className="w-8 h-8 rounded-full bg-[var(--highlight-bg)] text-[#E06859] border border-[var(--highlight-border)] flex items-center justify-center shadow-xs">
-            <Loader2 className="w-4 h-4 animate-spin text-[#E06859]" />
+          <div className="w-8 h-8 rounded-full bg-[var(--highlight-bg)] text-[#DA7735] border border-[var(--highlight-border)] flex items-center justify-center shadow-xs">
+            <Loader2 className="w-4 h-4 animate-spin text-[#DA7735]" />
           </div>
         ) : (
           <div className="w-8 h-8 rounded-full bg-[var(--surface-subtle)] text-[var(--text-subtle)] border border-[var(--border-theme)] flex items-center justify-center text-xs font-bold font-heading">
@@ -50,7 +50,7 @@ export default function ProgressStep({
             state === "completed"
               ? "text-[var(--text-primary)]"
               : state === "active"
-              ? "text-[#FDA4AF] font-bold"
+              ? "text-[#E7AD72] font-bold"
               : "text-[var(--text-subtle)]"
           )}
         >
@@ -60,7 +60,7 @@ export default function ProgressStep({
           <motion.div
             initial={{ opacity: 0, y: -2 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-xs text-[#E06859] mt-0.5 animate-pulse"
+            className="text-xs text-[#DA7735] mt-0.5 animate-pulse"
           >
             {sublabel}
           </motion.div>
@@ -80,7 +80,7 @@ export default function ProgressStep({
           </span>
         )}
         {state === "active" && (
-          <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[var(--highlight-bg)] text-[#FDA4AF] border border-[var(--highlight-border)] animate-pulse">
+          <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[var(--highlight-bg)] text-[#E7AD72] border border-[var(--highlight-border)] animate-pulse">
             Analyzing...
           </span>
         )}

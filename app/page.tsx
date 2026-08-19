@@ -31,8 +31,8 @@ export default function HomePage() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[220px] bg-gradient-to-br from-[var(--highlight-bg)] via-white/[0.01] to-transparent rounded-full blur-2xl pointer-events-none opacity-50" />
 
             {/* Top Pill Badge */}
-            <div className="relative z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-[11px] sm:text-xs font-semibold text-[#FDA4AF]">
-              <Sparkles className="w-3 h-3 text-[#E06859]" />
+            <div className="relative z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-[11px] sm:text-xs font-semibold text-[#E7AD72]">
+              <Sparkles className="w-3 h-3 text-[#DA7735]" />
               <span>Ready in 8 seconds • 100% Free Live Check</span>
             </div>
 
@@ -55,7 +55,7 @@ export default function HomePage() {
             <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
               <Link
                 href="/#search-box"
-                className="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-xs sm:text-sm text-white bg-[#E06859] hover:bg-[#D4594A] shadow-md shadow-[#E06859]/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer cta-pulse"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-xs sm:text-sm text-white bg-[#DA7735] hover:bg-[#CC602A] shadow-md shadow-[#DA7735]/20 hover:shadow-lg hover:shadow-[#DA7735]/35 transition-all flex items-center justify-center gap-2 group cursor-pointer cta-pulse"
               >
                 <span>Check Your First Competitor Free</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -72,12 +72,12 @@ export default function HomePage() {
             {/* Compact Trust Marks */}
             <div className="relative z-10 flex flex-wrap items-center justify-center gap-4 text-[11px] text-[var(--text-subtle)] pt-1 font-medium">
               <div className="flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#E06859]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#DA7735]" />
                 <span>No sign-up or install needed</span>
               </div>
               <span className="hidden sm:inline text-[var(--border-theme)]">•</span>
               <div className="flex items-center gap-1">
-                <Zap className="w-3.5 h-3.5 text-[#E06859]" />
+                <Zap className="w-3.5 h-3.5 text-[#DA7735]" />
                 <span>100% Safe & Private</span>
               </div>
             </div>

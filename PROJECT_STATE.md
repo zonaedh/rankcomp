@@ -22,22 +22,31 @@
 - **Styling**: Vanilla CSS Variables + Tailwind CSS utility classes
 - **Animations**: Framer Motion & canvas-confetti
 - **Icons**: Lucide React
-- **Theme**: **Default Dark Mode (`#09090C` Deep Obsidian Zinc)** with **Tactile Sun/Moon Theme Toggle** (`ThemeProvider` with `localStorage` persistence and anti-FOUC inline script in `app/layout.tsx`).
+- **Theme**: **Default Dark Mode (`#000000` Pure Pitch Black Base + Luxury Porsche Amber Accents)** with **Tactile Sun/Moon Theme Toggle** (`ThemeProvider` with `localStorage` persistence and anti-FOUC inline script in `app/layout.tsx`).
 
 ### Design Tokens (`app/globals.css`):
 - **Dark Mode (Default)**:
-  - Base Background: `--bg-base: #09090C` (Deep Obsidian Zinc)
-  - Card Surface: `--surface-card: #121217` / `--surface: #101014`
-  - Subtle Surface: `--surface-subtle: #16161D`
-  - Primary Text: `--text-primary: #F4F4F6` (Eye-Soothing Soft White)
-  - Secondary Text: `--text-secondary: #9494A0` (Muted Zinc)
-  - Accent Coral / Light Rose: `#E06859` (Soft Rose Coral) / `#F28F82` / `#FDA4AF` (Blush)
-  - Glass Borders: `--border-theme: rgba(255, 255, 255, 0.07)` & `--border-accent: rgba(224, 104, 89, 0.28)`
-  - Smooth Shadows: `--card-shadow: 0 4px 20px -2px rgba(0,0,0,0.4)`
+  - Base Background: `--bg-base: #000000` (Pure Pitch Black OLED Canvas)
+  - Card Surface: `--surface-card: #0C0C0F` / `--surface: #0A0A0D`
+  - Subtle Surface: `--surface-subtle: #0E0E12`
+  - Primary Text: `--text-primary: #FDF7EF` (Porsche 50 - Alabaster Cream White for supreme readability & zero glare)
+  - Secondary Text: `--text-secondary: #C8BEB5` (Muted Warm Taupe-Zinc)
+  - Accent Porsche Amber:
+    - `50`: `#FDF7EF` (Cream White)
+    - `100`: `#F9ECDB` (Champagne)
+    - `200`: `#F3D6B5` (Warm Blush)
+    - `300`: `#E7AD72` (Golden Sand)
+    - `400`: `#E19456` (Copper Amber)
+    - `500`: `#DA7735` (Porsche Primary Brand CTA)
+    - `600`: `#CC602A` (Hover Terracotta)
+    - `700`: `#A94B25` (Burnished Copper)
+    - `950`: `#3B180F` (Deep Espresso)
+  - Glass Borders: `--border-theme: rgba(243, 214, 181, 0.08)` & `--border-accent: rgba(225, 148, 86, 0.25)`
+  - Smooth Multi-Layered Shadows: `--card-shadow: 0 6px 24px -2px rgba(0,0,0,0.95)`
 - **Light Mode**:
-  - Base Background: `--bg-base: #FAF9F9`
+  - Base Background: `--bg-base: #FDF7EF` (Porsche 50)
   - Card Surface: `--surface-card: #FFFFFF`
-  - Primary Text: `--text-primary: #18181B`
+  - Primary Text: `--text-primary: #2C130B` (Porsche 950)
 
 ---
 

@@ -36,15 +36,15 @@ export default function DemoPage() {
       {/* Demo Banner */}
       <div className="bg-[var(--surface-card)] border border-[var(--border-theme)] rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[var(--highlight-bg)] text-[#E06859] border border-[var(--highlight-border)] flex items-center justify-center shrink-0 shadow-xs">
-            <Sparkles className="w-5 h-5 text-[#E06859]" />
+          <div className="w-10 h-10 rounded-xl bg-[var(--highlight-bg)] text-[#DA7735] border border-[var(--highlight-border)] flex items-center justify-center shrink-0 shadow-xs">
+            <Sparkles className="w-5 h-5 text-[#DA7735]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#FDA4AF]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#E7AD72]">
                 Sample Reports Library
               </span>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[var(--highlight-bg)] text-[#FDA4AF] border border-[var(--highlight-border)]">
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[var(--highlight-bg)] text-[#E7AD72] border border-[var(--highlight-border)]">
                 Live Preview
               </span>
             </div>
@@ -62,8 +62,8 @@ export default function DemoPage() {
               onClick={() => setSelectedDomain(preset.domain)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 selectedDomain === preset.domain
-                  ? "bg-[#E06859] text-white shadow-xs"
-                  : "bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-theme)] hover:border-[#E06859]/40"
+                  ? "bg-[#DA7735] text-white shadow-xs"
+                  : "bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-theme)] hover:border-[#DA7735]/40"
               }`}
             >
               {preset.label}
@@ -77,7 +77,7 @@ export default function DemoPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[#FDA4AF] px-3 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border-theme)] shadow-2xs hover:bg-[var(--highlight-bg)] transition-all"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[#E7AD72] px-3 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border-theme)] shadow-2xs hover:bg-[var(--highlight-bg)] transition-all"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Analyze Another Competitor</span>
@@ -87,7 +87,7 @@ export default function DemoPage() {
             <span className="font-semibold text-[var(--text-primary)]">{report.name}</span>
             <span>•</span>
             <span className="flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5 text-[#E06859]" />
+              <Calendar className="w-3.5 h-3.5 text-[#DA7735]" />
               {report.analyzedAt}
             </span>
           </div>
@@ -100,12 +100,12 @@ export default function DemoPage() {
           >
             {copiedLink ? (
               <>
-                <Check className="w-3.5 h-3.5 text-[#E06859]" />
-                <span className="text-[#FDA4AF]">Link Copied</span>
+                <Check className="w-3.5 h-3.5 text-[#DA7735]" />
+                <span className="text-[#E7AD72]">Link Copied</span>
               </>
             ) : (
               <>
-                <Share2 className="w-3.5 h-3.5 text-[#E06859]" />
+                <Share2 className="w-3.5 h-3.5 text-[#DA7735]" />
                 <span>Share Demo</span>
               </>
             )}
@@ -113,7 +113,7 @@ export default function DemoPage() {
 
           <Link
             href="#unlock-section"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-[#E06859] hover:bg-[#D4594A] transition-all shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-[#DA7735] hover:bg-[#CC602A] transition-all shadow-2xs"
           >
             <Sparkles className="w-3.5 h-3.5 text-white" />
             <span>Unlock Dossier & Free 1:1 Call</span>

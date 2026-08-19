@@ -66,7 +66,7 @@ export default function AISummaryCard({
       title="AI Strategic Playbook"
       subtitle="Plain-English competitor analysis & growth moves"
       delay={delay}
-      icon={<Sparkles className="w-5 h-5 text-[#E06859]" />}
+      icon={<Sparkles className="w-5 h-5 text-[#DA7735]" />}
       badge={
         <div className="flex items-center gap-1.5">
           <StatusBadge
@@ -86,28 +86,28 @@ export default function AISummaryCard({
         {/* Estimated Market Opportunity Callout Banner */}
         <div className="flex items-center justify-between p-3.5 rounded-2xl bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs">
           <div className="flex items-center gap-2 font-bold text-[var(--text-primary)]">
-            <TrendingUp className="w-4 h-4 text-[#E06859]" />
+            <TrendingUp className="w-4 h-4 text-[#DA7735]" />
             <span>Estimated Revenue Opportunity:</span>
           </div>
-          <span className="font-black text-[#F28F82] text-xs sm:text-sm font-heading">
+          <span className="font-black text-[#E7AD72] text-xs sm:text-sm font-heading">
             {oppValue}
           </span>
         </div>
 
         {/* Plain English Executive Brief */}
         <div className="relative p-4 rounded-2xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] text-xs sm:text-sm text-[var(--text-primary)] leading-relaxed space-y-2">
-          <div className="font-bold text-[#E06859] flex items-center justify-between gap-2">
+          <div className="font-bold text-[#DA7735] flex items-center justify-between gap-2">
             <span className="font-heading text-sm sm:text-base leading-snug">
               {aiSummary.headline}
             </span>
             <button
               onClick={handleCopySummary}
-              className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#E06859] hover:text-[#FDA4AF] transition-colors cursor-pointer bg-[var(--surface)] px-2.5 py-1 rounded-lg border border-[var(--border-theme)] shadow-2xs shrink-0"
+              className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#DA7735] hover:text-[#E7AD72] transition-colors cursor-pointer bg-[var(--surface)] px-2.5 py-1 rounded-lg border border-[var(--border-theme)] shadow-2xs shrink-0"
               title="Copy executive summary"
             >
               {copiedSummary ? (
                 <>
-                  <Check className="w-3 h-3 text-[#E06859]" />
+                  <Check className="w-3 h-3 text-[#DA7735]" />
                   <span>Copied</span>
                 </>
               ) : (
@@ -166,7 +166,7 @@ export default function AISummaryCard({
               onClick={() => setActiveTab("quickwin")}
               className={`flex-1 py-1.5 px-2 rounded-lg font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                 activeTab === "quickwin"
-                  ? "bg-[#E06859] text-white shadow-xs"
+                  ? "bg-[#DA7735] text-white shadow-xs"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
@@ -177,7 +177,7 @@ export default function AISummaryCard({
               onClick={() => setActiveTab("roadmap")}
               className={`flex-1 py-1.5 px-2 rounded-lg font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                 activeTab === "roadmap"
-                  ? "bg-[#E06859] text-white shadow-xs"
+                  ? "bg-[#DA7735] text-white shadow-xs"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
@@ -188,7 +188,7 @@ export default function AISummaryCard({
               onClick={() => setActiveTab("counter")}
               className={`flex-1 py-1.5 px-2 rounded-lg font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                 activeTab === "counter"
-                  ? "bg-[#E06859] text-white shadow-xs"
+                  ? "bg-[#DA7735] text-white shadow-xs"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
@@ -201,8 +201,8 @@ export default function AISummaryCard({
           {activeTab === "quickwin" && (
             <div className="p-3.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] space-y-2.5 text-xs">
               <div className="space-y-1">
-                <div className="flex items-center gap-1.5 font-bold text-[#E06859]">
-                  <Zap className="w-3.5 h-3.5 text-[#E06859]" />
+                <div className="flex items-center gap-1.5 font-bold text-[#DA7735]">
+                  <Zap className="w-3.5 h-3.5 text-[#DA7735]" />
                   <span>Immediate Move to Win Customers (Next 7 Days):</span>
                 </div>
                 <p className="text-[var(--text-secondary)] leading-relaxed pl-5 text-[11px] sm:text-xs">
@@ -215,17 +215,17 @@ export default function AISummaryCard({
                 <div className="p-3 rounded-lg bg-[var(--highlight-bg)] border border-[var(--highlight-border)] space-y-1.5">
                   <div className="flex items-center justify-between font-bold text-[var(--text-primary)]">
                     <span className="flex items-center gap-1.5 text-[11px]">
-                      <MessageSquareQuote className="w-3.5 h-3.5 text-[#E06859]" />
+                      <MessageSquareQuote className="w-3.5 h-3.5 text-[#DA7735]" />
                       <span>Ready-to-Use Ad Headline / Hook:</span>
                     </span>
                     <button
                       onClick={handleCopyHook}
-                      className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#E06859] hover:text-[#FDA4AF] transition-colors cursor-pointer bg-[var(--surface)] px-2 py-0.5 rounded border border-[var(--border-theme)] shadow-2xs"
+                      className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#DA7735] hover:text-[#E7AD72] transition-colors cursor-pointer bg-[var(--surface)] px-2 py-0.5 rounded border border-[var(--border-theme)] shadow-2xs"
                       title="Copy ad hook"
                     >
                       {copiedHook ? (
                         <>
-                          <Check className="w-3 h-3 text-[#E06859]" />
+                          <Check className="w-3 h-3 text-[#DA7735]" />
                           <span>Copied</span>
                         </>
                       ) : (
@@ -247,13 +247,13 @@ export default function AISummaryCard({
           {/* Tab 2: 3-Step Action Roadmap */}
           {activeTab === "roadmap" && (
             <div className="p-3.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] space-y-2 text-xs">
-              <div className="flex items-center gap-1.5 font-bold text-[#E06859] mb-1">
-                <Calendar className="w-3.5 h-3.5 text-[#E06859]" />
+              <div className="flex items-center gap-1.5 font-bold text-[#DA7735] mb-1">
+                <Calendar className="w-3.5 h-3.5 text-[#DA7735]" />
                 <span>Step-by-Step Growth Plan:</span>
               </div>
               <div className="space-y-2">
                 <div className="p-2.5 rounded-lg bg-[var(--surface)] border border-[var(--border-theme)]">
-                  <span className="font-bold text-[#E06859] block text-[10px] uppercase tracking-wider mb-0.5">
+                  <span className="font-bold text-[#DA7735] block text-[10px] uppercase tracking-wider mb-0.5">
                     Phase 1 (Days 1–7):
                   </span>
                   <p className="text-[var(--text-secondary)] text-[11px] leading-relaxed">
@@ -261,7 +261,7 @@ export default function AISummaryCard({
                   </p>
                 </div>
                 <div className="p-2.5 rounded-lg bg-[var(--surface)] border border-[var(--border-theme)]">
-                  <span className="font-bold text-amber-400 block text-[10px] uppercase tracking-wider mb-0.5">
+                  <span className="font-bold text-[#E19456] block text-[10px] uppercase tracking-wider mb-0.5">
                     Phase 2 (Days 14–30):
                   </span>
                   <p className="text-[var(--text-secondary)] text-[11px] leading-relaxed">
@@ -283,8 +283,8 @@ export default function AISummaryCard({
           {/* Tab 3: Counter-Play */}
           {activeTab === "counter" && (
             <div className="p-3.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] space-y-2 text-xs">
-              <div className="flex items-center gap-1.5 font-bold text-[#E06859]">
-                <Target className="w-3.5 h-3.5 text-[#E06859]" />
+              <div className="flex items-center gap-1.5 font-bold text-[#DA7735]">
+                <Target className="w-3.5 h-3.5 text-[#DA7735]" />
                 <span>Recommended Strategy:</span>
               </div>
               <p className="text-[var(--text-secondary)] leading-relaxed text-[11px] sm:text-xs">
@@ -298,13 +298,13 @@ export default function AISummaryCard({
         <div className="pt-1">
           <Link
             href="#unlock-section"
-            className="w-full p-3 rounded-xl bg-[var(--highlight-bg)] hover:bg-[var(--highlight-border)] border border-[var(--highlight-border)] text-xs font-bold text-[var(--text-primary)] hover:text-[#FDA4AF] flex items-center justify-between transition-all group cursor-pointer"
+            className="w-full p-3 rounded-xl bg-[var(--highlight-bg)] hover:bg-[var(--highlight-border)] border border-[var(--highlight-border)] text-xs font-bold text-[var(--text-primary)] hover:text-[#E7AD72] flex items-center justify-between transition-all group cursor-pointer"
           >
             <span className="flex items-center gap-2">
-              <Lock className="w-3.5 h-3.5 text-[#E06859]" />
+              <Lock className="w-3.5 h-3.5 text-[#DA7735]" />
               <span>Full 18-Page Dossier + Free 30-Min 1:1 Strategy Call</span>
             </span>
-            <span className="inline-flex items-center gap-1 font-bold text-[#E06859] group-hover:translate-x-0.5 transition-transform text-xs">
+            <span className="inline-flex items-center gap-1 font-bold text-[#DA7735] group-hover:translate-x-0.5 transition-transform text-xs">
               <span>Claim Free ($497)</span>
               <ArrowDown className="w-3 h-3" />
             </span>

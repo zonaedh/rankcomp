@@ -16,15 +16,15 @@ export default function TermsOfServicePage() {
       <div className="space-y-4">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[#FDA4AF] px-3 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border-theme)] shadow-2xs hover:bg-[var(--highlight-bg)] transition-all"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[#E7AD72] px-3 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border-theme)] shadow-2xs hover:bg-[var(--highlight-bg)] transition-all"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Home</span>
         </Link>
 
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#FDA4AF]">
-            <Scale className="w-3.5 h-3.5 text-[#E06859]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#E7AD72]">
+            <Scale className="w-3.5 h-3.5 text-[#DA7735]" />
             <span>Terms of Agreement</span>
           </div>
 
@@ -54,7 +54,7 @@ export default function TermsOfServicePage() {
         {/* 2. Nature of Service */}
         <section className="space-y-3">
           <h2 className="text-xl font-bold font-heading text-[var(--text-primary)] flex items-center gap-2">
-            <FileText className="w-5 h-5 text-[#E06859]" />
+            <FileText className="w-5 h-5 text-[#DA7735]" />
             <span>2. Nature of the Service</span>
           </h2>
           <p>
@@ -74,15 +74,15 @@ export default function TermsOfServicePage() {
           <p>When using RankComp, you agree not to:</p>
           <ul className="space-y-2 pl-2">
             <li className="flex items-start gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E06859] mt-2 shrink-0"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#DA7735] mt-2 shrink-0"></span>
               <span>Use the service for any illegal, malicious, or abusive activities.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E06859] mt-2 shrink-0"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#DA7735] mt-2 shrink-0"></span>
               <span>Attempt to overload, disrupt, or launch denial-of-service attacks against our platform.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E06859] mt-2 shrink-0"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#DA7735] mt-2 shrink-0"></span>
               <span>Misrepresent the source or ownership of generated reports when presenting data to third parties.</span>
             </li>
           </ul>
@@ -91,7 +91,7 @@ export default function TermsOfServicePage() {
         {/* 4. Estimations & Disclaimers */}
         <section className="space-y-3">
           <h2 className="text-xl font-bold font-heading text-[var(--text-primary)] flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-amber-400" />
+            <AlertTriangle className="w-5 h-5 text-[#E19456]" />
             <span>4. Metric Estimations & Third-Party Disclaimers</span>
           </h2>
           <p>
@@ -105,7 +105,7 @@ export default function TermsOfServicePage() {
         {/* 5. Limitation of Liability */}
         <section className="space-y-3">
           <h2 className="text-xl font-bold font-heading text-[var(--text-primary)] flex items-center gap-2">
-            <Scale className="w-5 h-5 text-[#E06859]" />
+            <Scale className="w-5 h-5 text-[#DA7735]" />
             <span>5. Limitation of Liability</span>
           </h2>
           <p>
@@ -116,7 +116,7 @@ export default function TermsOfServicePage() {
         {/* 6. Contact */}
         <section className="space-y-3 pt-4 border-t border-[var(--border-theme)]">
           <h2 className="text-xl font-bold font-heading text-[var(--text-primary)] flex items-center gap-2">
-            <Mail className="w-5 h-5 text-[#E06859]" />
+            <Mail className="w-5 h-5 text-[#DA7735]" />
             <span>6. Contact Information</span>
           </h2>
           <p>
@@ -125,7 +125,7 @@ export default function TermsOfServicePage() {
           <div className="p-4 rounded-2xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] space-y-1">
             <p className="font-bold text-[var(--text-primary)]">RankComp Legal & Operations</p>
             <p>Developer: Zonaed Hossain</p>
-            <p>Website: <a href="https://zonaedhossain.com" target="_blank" rel="noopener noreferrer" className="text-[#FDA4AF] underline">zonaedhossain.com</a></p>
+            <p>Website: <a href="https://zonaedhossain.com" target="_blank" rel="noopener noreferrer" className="text-[#DA7735] underline">zonaedhossain.com</a></p>
           </div>
         </section>
       </div>

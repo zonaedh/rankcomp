@@ -82,7 +82,7 @@ export default function FacebookPageLeadModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/80 backdrop-blur-md"
+          className="fixed inset-0 bg-black/85 backdrop-blur-md"
         />
 
         {/* Modal Content */}
@@ -92,7 +92,7 @@ export default function FacebookPageLeadModal({
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
           className="relative w-full max-w-xl rounded-3xl bg-[var(--surface-card)] border border-[var(--border-theme)] shadow-2xl overflow-hidden z-10 my-8"
         >
-          {/* Top glowing radiant bar */}
+          {/* Top glowing radiant bar in Porsche amber */}
           <div className="h-1.5 w-full bg-gradient-to-r from-transparent via-[var(--border-accent)] to-transparent" />
 
           {/* Close button */}
@@ -109,14 +109,14 @@ export default function FacebookPageLeadModal({
               <>
                 {/* Header with VIP Badge */}
                 <div className="space-y-3">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#FDA4AF]">
-                    <Sparkles className="w-3.5 h-3.5 text-[#E06859]" />
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#E7AD72]">
+                    <Sparkles className="w-3.5 h-3.5 text-[#DA7735]" />
                     <span>Exclusive Feature • Social Page Intelligence</span>
                   </div>
 
                   <h2 className="text-xl sm:text-2xl font-extrabold font-heading text-[var(--text-primary)] leading-snug">
                     Direct Facebook Page Dossier:{" "}
-                    <span className="text-[#FDA4AF] underline decoration-[#E06859]/40">{pageHandle}</span>
+                    <span className="text-[#E7AD72] underline decoration-[#DA7735]/40">{pageHandle}</span>
                   </h2>
 
                   <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
@@ -126,8 +126,8 @@ export default function FacebookPageLeadModal({
 
                 {/* Feature Highlights Card */}
                 <div className="p-4 rounded-2xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] space-y-2.5 text-xs text-[var(--text-primary)]">
-                  <div className="font-bold text-[#E06859] flex items-center gap-1.5 uppercase text-[11px] tracking-wide">
-                    <Lock className="w-3.5 h-3.5 text-[#E06859]" />
+                  <div className="font-bold text-[#DA7735] flex items-center gap-1.5 uppercase text-[11px] tracking-wide">
+                    <Lock className="w-3.5 h-3.5 text-[#DA7735]" />
                     <span>Included in this Free 14-Page Dossier:</span>
                   </div>
 
@@ -151,7 +151,7 @@ export default function FacebookPageLeadModal({
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label className="block text-xs font-semibold text-[var(--text-primary)] mb-1.5">
-                      Work Email <span className="text-[#E06859]">*</span>
+                      Work Email <span className="text-[#DA7735]">*</span>
                     </label>
                     <div className="relative">
                       <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-subtle)]" />
@@ -161,7 +161,7 @@ export default function FacebookPageLeadModal({
                         placeholder="founder@company.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#E06859] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#DA7735] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
                       />
                     </div>
                   </div>
@@ -177,7 +177,7 @@ export default function FacebookPageLeadModal({
                         placeholder="John Doe"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#E06859] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#DA7735] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
                       />
                     </div>
                   </div>
@@ -191,7 +191,7 @@ export default function FacebookPageLeadModal({
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-[#E06859] hover:bg-[#D4594A] shadow-md shadow-[#E06859]/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-[#DA7735] hover:bg-[#CC602A] shadow-md shadow-[#DA7735]/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -210,7 +210,7 @@ export default function FacebookPageLeadModal({
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
-                      <Zap className="w-3.5 h-3.5 text-[#E06859]" />
+                      <Zap className="w-3.5 h-3.5 text-[#DA7735]" />
                       Delivered in 5 Mins
                     </span>
                   </div>
@@ -228,7 +228,7 @@ export default function FacebookPageLeadModal({
                   </h3>
                   <p className="text-xs sm:text-sm text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
                     We are synthesizing all active ads and copywriting signals for{" "}
-                    <strong className="text-[#FDA4AF]">facebook.com/{pageHandle}</strong>. Your tailored 14-page PDF will arrive at{" "}
+                    <strong className="text-[#E7AD72]">facebook.com/{pageHandle}</strong>. Your tailored 14-page PDF will arrive at{" "}
                     <strong className="text-[var(--text-primary)]">{email}</strong> within 5 minutes.
                   </p>
                 </div>
@@ -241,7 +241,7 @@ export default function FacebookPageLeadModal({
                     className="w-full py-3 px-4 rounded-xl bg-[var(--highlight-bg)] hover:bg-[var(--highlight-border)] border border-[var(--highlight-border)] text-[var(--text-primary)] font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
                   >
                     <span>View Official Meta Ad Library Archive</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#E06859]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#DA7735]" />
                   </a>
                 </div>
               </div>

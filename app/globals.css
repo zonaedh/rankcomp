@@ -1,82 +1,76 @@
 @import "tailwindcss";
 
 @theme {
-  --color-coral-50: #fdf6f5;
-  --color-coral-100: #faeae8;
-  --color-coral-200: #f6d4d0;
-  --color-coral-300: #eeafaa;
-  --color-coral-400: #e4877e;
-  --color-coral-500: #d95e52;
-  --color-coral-600: #c4473c;
-  --color-coral-700: #a4382f;
-  --color-coral-800: #883129;
-  --color-coral-900: #712c25;
-  --color-coral-950: #3d130f;
+  --color-porsche-50: #fdf7ef;
+  --color-porsche-100: #f9ecdb;
+  --color-porsche-200: #f3d6b5;
+  --color-porsche-300: #e7ad72;
+  --color-porsche-400: #e19456;
+  --color-porsche-500: #da7735;
+  --color-porsche-600: #cc602a;
+  --color-porsche-700: #a94b25;
+  --color-porsche-800: #883c24;
+  --color-porsche-900: #6e3320;
+  --color-porsche-950: #3b180f;
 
-  --color-accent-soft: #e06859;
-  --color-accent-light: #f28f82;
-  --color-accent-rose: #fda4af;
-  --color-accent-glow: rgba(224, 104, 89, 0.12);
-
-  --color-obsidian-950: #060608;
-  --color-obsidian-900: #09090c;
-  --color-obsidian-850: #0e0e12;
-  --color-obsidian-800: #131318;
-  --color-obsidian-750: #191920;
-  --color-obsidian-700: #22222a;
+  --color-brand-primary: #da7735;
+  --color-brand-hover: #cc602a;
+  --color-brand-light: #e19456;
+  --color-brand-sand: #e7ad72;
+  --color-brand-cream: #fdf7ef;
 }
 
 @layer base {
   :root {
-    --bg-base: #FAFAFC;
+    --bg-base: #FDF7EF;
     --surface: #FFFFFF;
-    --surface-hover: #F7F7FA;
-    --surface-subtle: #F3F3F7;
+    --surface-hover: #F9ECDB;
+    --surface-subtle: #F6EBDD;
     --surface-card: #FFFFFF;
 
-    --text-primary: #16161A;
-    --text-secondary: #52525E;
-    --text-subtle: #8A8A98;
+    --text-primary: #2C130B;
+    --text-secondary: #6E3320;
+    --text-subtle: #883C24;
 
-    --border-theme: #E5E5EB;
-    --border-hover: #E06859;
-    --border-accent: rgba(224, 104, 89, 0.28);
+    --border-theme: #F3D6B5;
+    --border-hover: #DA7735;
+    --border-accent: rgba(218, 119, 53, 0.35);
 
-    --highlight-bg: rgba(224, 104, 89, 0.05);
-    --highlight-border: rgba(224, 104, 89, 0.2);
-    --highlight-text: #A4382F;
+    --highlight-bg: rgba(218, 119, 53, 0.08);
+    --highlight-border: rgba(218, 119, 53, 0.25);
+    --highlight-text: #DA7735;
 
-    --nav-bg: rgba(250, 250, 252, 0.85);
-    --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
-    --card-shadow-hover: 0 12px 28px -4px rgba(0, 0, 0, 0.08), 0 2px 8px -1px rgba(224, 104, 89, 0.08);
+    --nav-bg: rgba(253, 247, 239, 0.88);
+    --card-shadow: 0 4px 20px -2px rgba(59, 24, 15, 0.06), 0 1px 3px 0 rgba(59, 24, 15, 0.03);
+    --card-shadow-hover: 0 12px 28px -4px rgba(59, 24, 15, 0.12), 0 2px 8px -1px rgba(218, 119, 53, 0.12);
 
-    --grid-line: rgba(0, 0, 0, 0.035);
+    --grid-line: rgba(59, 24, 15, 0.04);
   }
 
   .dark {
-    --bg-base: #09090C;
-    --surface: #111116;
-    --surface-hover: #16161C;
-    --surface-subtle: #141419;
-    --surface-card: #121217;
+    --bg-base: #000000;
+    --surface: #0A0A0D;
+    --surface-hover: #131318;
+    --surface-subtle: #0E0E12;
+    --surface-card: #0C0C0F;
 
-    --text-primary: #F3F3F6;
-    --text-secondary: #A0A0AB;
-    --text-subtle: #6E6E7A;
+    --text-primary: #FDF7EF;
+    --text-secondary: #C8BEB5;
+    --text-subtle: #82786F;
 
-    --border-theme: rgba(255, 255, 255, 0.07);
-    --border-hover: rgba(224, 104, 89, 0.35);
-    --border-accent: rgba(224, 104, 89, 0.22);
+    --border-theme: rgba(243, 214, 181, 0.08);
+    --border-hover: rgba(218, 119, 53, 0.45);
+    --border-accent: rgba(225, 148, 86, 0.25);
 
-    --highlight-bg: rgba(224, 104, 89, 0.06);
-    --highlight-border: rgba(224, 104, 89, 0.18);
-    --highlight-text: #FDA4AF;
+    --highlight-bg: rgba(218, 119, 53, 0.08);
+    --highlight-border: rgba(218, 119, 53, 0.22);
+    --highlight-text: #E7AD72;
 
-    --nav-bg: rgba(9, 9, 12, 0.85);
-    --card-shadow: 0 6px 24px -2px rgba(0, 0, 0, 0.5), 0 1px 3px 0 rgba(0, 0, 0, 0.35);
-    --card-shadow-hover: 0 16px 36px -4px rgba(0, 0, 0, 0.7), 0 0 20px -2px rgba(224, 104, 89, 0.07);
+    --nav-bg: rgba(0, 0, 0, 0.88);
+    --card-shadow: 0 6px 24px -2px rgba(0, 0, 0, 0.95), 0 1px 3px 0 rgba(0, 0, 0, 0.8);
+    --card-shadow-hover: 0 16px 40px -4px rgba(0, 0, 0, 0.98), 0 0 24px -2px rgba(218, 119, 53, 0.12);
 
-    --grid-line: rgba(255, 255, 255, 0.03);
+    --grid-line: rgba(243, 214, 181, 0.03);
   }
 
   body {
@@ -156,23 +150,23 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #E06859 0%, #F28F82 50%, #FDA4AF 100%);
+  background: linear-gradient(135deg, #DA7735 0%, #E19456 50%, #E7AD72 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .dark .gradient-text {
-  background: linear-gradient(135deg, #FDA4AF 0%, #F28F82 50%, #E06859 100%);
+  background: linear-gradient(135deg, #FDF7EF 0%, #E7AD72 45%, #DA7735 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.gradient-coral {
-  background: linear-gradient(135deg, #181110 0%, #2A1715 60%, #E06859 100%);
+.gradient-porsche {
+  background: linear-gradient(135deg, #3B180F 0%, #883C24 60%, #DA7735 100%);
 }
 
 .hero-glow {
-  background: radial-gradient(circle at 50% 25%, rgba(224, 104, 89, 0.08) 0%, rgba(224, 104, 89, 0.02) 40%, transparent 68%);
+  background: radial-gradient(circle at 50% 25%, rgba(218, 119, 53, 0.1) 0%, rgba(218, 119, 53, 0.02) 45%, transparent 70%);
 }
 
 .modern-grid {
@@ -192,13 +186,13 @@
   background-size: 24px 24px;
 }
 
-/* Button subtle ripple animation in warm rose */
+/* Button subtle ripple animation in warm Porsche amber */
 @keyframes subtle-pulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(224, 104, 89, 0.35);
+    box-shadow: 0 0 0 0 rgba(218, 119, 53, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 6px rgba(224, 104, 89, 0);
+    box-shadow: 0 0 0 7px rgba(218, 119, 53, 0);
   }
 }
 

@@ -46,7 +46,7 @@ export default function SocialProof() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-theme)] shadow-xs">
           {stats.map((stat, idx) => (
             <div key={idx} className="text-center space-y-1">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-[#E06859]">
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-[#DA7735]">
                 {stat.value}
               </div>
               <div className="text-xs sm:text-sm font-medium text-[var(--text-secondary)]">
@@ -82,7 +82,7 @@ export default function SocialProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.15 }}
-              className="bg-[var(--surface-card)] rounded-2xl p-6 sm:p-7 border border-[var(--border-theme)] flex flex-col justify-between hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-black/30 transition-all shadow-2xs"
+              className="bg-[var(--surface-card)] rounded-2xl p-6 sm:p-7 border border-[var(--border-theme)] flex flex-col justify-between hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-black/50 transition-all shadow-2xs"
             >
               <div className="space-y-4">
                 {/* Rating stars */}
@@ -109,7 +109,7 @@ export default function SocialProof() {
                     {item.role}
                   </div>
                 </div>
-                <span className="text-[10px] font-bold px-2.5 py-1 rounded bg-[var(--highlight-bg)] text-[#FDA4AF] border border-[var(--highlight-border)]">
+                <span className="text-[10px] font-bold px-2.5 py-1 rounded bg-[var(--highlight-bg)] text-[#E7AD72] border border-[var(--highlight-border)]">
                   {item.company}
                 </span>
               </div>

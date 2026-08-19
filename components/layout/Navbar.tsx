@@ -14,16 +14,16 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2A1715] to-[#E06859] flex items-center justify-center text-white shadow-md shadow-[#E06859]/20 group-hover:scale-105 transition-transform duration-200">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3B180F] via-[#883C24] to-[#DA7735] flex items-center justify-center text-white shadow-md shadow-[#DA7735]/20 group-hover:scale-105 transition-transform duration-200">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-xl tracking-tight text-[var(--text-primary)] font-heading">
-                  Rank<span className="text-[#FDA4AF]">Comp</span>
+                  Rank<span className="text-[#DA7735]">Comp</span>
                 </span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[var(--highlight-bg)] text-[#FDA4AF] border border-[var(--highlight-border)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#E06859] animate-pulse"></span>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[var(--highlight-bg)] text-[#E7AD72] border border-[var(--highlight-border)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DA7735] animate-pulse"></span>
                   LIVE SCAN
                 </span>
               </div>
@@ -37,21 +37,21 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/#features"
-              className="text-sm font-medium text-[var(--text-secondary)] hover:text-[#FDA4AF] transition-colors"
+              className="text-sm font-medium text-[var(--text-secondary)] hover:text-[#E7AD72] transition-colors"
             >
               Features
             </Link>
             <Link
               href="/#how-it-works"
-              className="text-sm font-medium text-[var(--text-secondary)] hover:text-[#FDA4AF] transition-colors"
+              className="text-sm font-medium text-[var(--text-secondary)] hover:text-[#E7AD72] transition-colors"
             >
               How It Works
             </Link>
             <Link
               href="/demo"
-              className="text-sm font-medium text-[#FDA4AF] hover:text-[#F28F82] flex items-center gap-1.5 transition-colors"
+              className="text-sm font-medium text-[#DA7735] hover:text-[#E7AD72] flex items-center gap-1.5 transition-colors"
             >
-              <Activity className="w-3.5 h-3.5 text-[#E06859]" />
+              <Activity className="w-3.5 h-3.5 text-[#DA7735]" />
               Sample Reports
             </Link>
           </nav>
@@ -63,7 +63,7 @@ export default function Navbar() {
 
             <Link
               href="/#search-box"
-              className="px-5 py-2.5 text-sm font-semibold text-white bg-[#E06859] hover:bg-[#D4594A] rounded-xl shadow-md shadow-[#E06859]/20 hover:shadow-lg hover:shadow-[#E06859]/30 transition-all flex items-center gap-2 group cursor-pointer"
+              className="px-5 py-2.5 text-sm font-semibold text-white bg-[#DA7735] hover:bg-[#CC602A] rounded-xl shadow-md shadow-[#DA7735]/20 hover:shadow-lg hover:shadow-[#DA7735]/35 transition-all flex items-center gap-2 group cursor-pointer"
             >
               <Search className="w-4 h-4 text-white" />
               <span>Scan Competitor Free</span>
@@ -77,13 +77,13 @@ export default function Navbar() {
 
             <Link
               href="/#search-box"
-              className="px-3 py-1.5 text-xs font-semibold text-white bg-[#E06859] rounded-lg"
+              className="px-3 py-1.5 text-xs font-semibold text-white bg-[#DA7735] rounded-lg"
             >
               Scan
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[var(--text-secondary)] hover:text-[#FDA4AF] focus:outline-none cursor-pointer"
+              className="p-2 text-[var(--text-secondary)] hover:text-[#E7AD72] focus:outline-none cursor-pointer"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -112,7 +112,7 @@ export default function Navbar() {
           <Link
             href="/demo"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-[#FDA4AF] bg-[var(--highlight-bg)]"
+            className="block px-3 py-2 rounded-lg text-base font-medium text-[#DA7735] bg-[var(--highlight-bg)]"
           >
             Sample Reports Library
           </Link>
@@ -120,7 +120,7 @@ export default function Navbar() {
             <Link
               href="/#search-box"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold text-white bg-[#E06859] rounded-xl shadow-md"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold text-white bg-[#DA7735] rounded-xl shadow-md"
             >
               <Search className="w-4 h-4" />
               <span>Scan Competitor Free</span>

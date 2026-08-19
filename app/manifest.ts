@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Instant competitor intelligence, active Meta ad creative tracking, Google search bidding signals, and PageSpeed benchmarks.",
     start_url: "/",
     display: "standalone",
-    background_color: "#09090C",
-    theme_color: "#E06859",
+    background_color: "#000000",
+    theme_color: "#DA7735",
     icons: [
       {
         src: "/favicon.ico",

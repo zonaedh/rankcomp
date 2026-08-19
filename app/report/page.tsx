@@ -86,13 +86,13 @@ function ReportContent() {
       <div className="min-h-[75vh] flex items-center justify-center px-4">
         <div className="text-center space-y-4 max-w-sm">
           <div className="relative w-16 h-16 mx-auto">
-            <div className="w-16 h-16 border-4 border-[#E06859]/20 border-t-[#E06859] rounded-full animate-spin" />
-            <Sparkles className="w-6 h-6 text-[#E06859] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            <div className="w-16 h-16 border-4 border-[#DA7735]/20 border-t-[#DA7735] rounded-full animate-spin" />
+            <Sparkles className="w-6 h-6 text-[#DA7735] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
           </div>
           <div className="space-y-1">
             <h3 className="text-lg font-bold text-[var(--text-primary)] font-heading">Generating Live Intelligence</h3>
             <p className="text-xs text-[var(--text-secondary)]">
-              Connecting to Google PageSpeed, Meta ad registries, and AI synthesis for <span className="font-semibold text-[#FDA4AF]">{domain}</span>...
+              Connecting to Google PageSpeed, Meta ad registries, and AI synthesis for <span className="font-semibold text-[#E7AD72]">{domain}</span>...
             </p>
           </div>
         </div>
@@ -116,7 +116,7 @@ function ReportContent() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
             <button
               onClick={fetchReport}
-              className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-[#E06859] hover:bg-[#D4594A] transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-[#DA7735] hover:bg-[#CC602A] transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               <span>Retry Audit</span>
@@ -140,7 +140,7 @@ function ReportContent() {
         <div className="flex items-center gap-3">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[#FDA4AF] px-3 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border-theme)] shadow-2xs hover:bg-[var(--highlight-bg)] transition-all"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[#E7AD72] px-3 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border-theme)] shadow-2xs hover:bg-[var(--highlight-bg)] transition-all"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Analyze Another</span>
@@ -150,7 +150,7 @@ function ReportContent() {
             <span className="font-semibold text-[var(--text-primary)]">{report.name}</span>
             <span>•</span>
             <span className="flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5 text-[#E06859]" />
+              <Calendar className="w-3.5 h-3.5 text-[#DA7735]" />
               {report.analyzedAt}
             </span>
           </div>
@@ -160,10 +160,10 @@ function ReportContent() {
           {/* Print / Save to PDF */}
           <button
             onClick={handlePrint}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--text-secondary)] hover:text-[#FDA4AF] bg-[var(--surface)] border border-[var(--border-theme)] hover:bg-[var(--highlight-bg)] transition-all cursor-pointer shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--text-secondary)] hover:text-[#E7AD72] bg-[var(--surface)] border border-[var(--border-theme)] hover:bg-[var(--highlight-bg)] transition-all cursor-pointer shadow-2xs"
             title="Print or Export PDF"
           >
-            <Printer className="w-3.5 h-3.5 text-[#E06859]" />
+            <Printer className="w-3.5 h-3.5 text-[#DA7735]" />
             <span>Print Report</span>
           </button>
 
@@ -174,12 +174,12 @@ function ReportContent() {
           >
             {copiedLink ? (
               <>
-                <Check className="w-3.5 h-3.5 text-[#E06859]" />
-                <span className="text-[#FDA4AF]">Link Copied</span>
+                <Check className="w-3.5 h-3.5 text-[#DA7735]" />
+                <span className="text-[#E7AD72]">Link Copied</span>
               </>
             ) : (
               <>
-                <Share2 className="w-3.5 h-3.5 text-[#E06859]" />
+                <Share2 className="w-3.5 h-3.5 text-[#DA7735]" />
                 <span>Share Snapshot</span>
               </>
             )}
@@ -187,7 +187,7 @@ function ReportContent() {
 
           <Link
             href="#unlock-section"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-[#E06859] hover:bg-[#D4594A] transition-all shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-[#DA7735] hover:bg-[#CC602A] transition-all shadow-2xs"
           >
             <Sparkles className="w-3.5 h-3.5 text-white" />
             <span>Unlock Dossier & Free 1:1 Call</span>
@@ -210,8 +210,8 @@ function ReportContent() {
             <h2 className="text-lg font-bold font-heading text-[var(--text-primary)]">
               Core Intelligence Signals (Executive Preview)
             </h2>
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[var(--highlight-bg)] text-[#FDA4AF] border border-[var(--highlight-border)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E06859] animate-pulse"></span>
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[var(--highlight-bg)] text-[#E7AD72] border border-[var(--highlight-border)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#DA7735] animate-pulse"></span>
               Live Telemetry
             </span>
           </div>
@@ -243,7 +243,7 @@ export default function ReportPage() {
     <Suspense
       fallback={
         <div className="min-h-[75vh] flex items-center justify-center">
-          <div className="w-10 h-10 border-3 border-[#E06859]/20 border-t-[#E06859] rounded-full animate-spin mx-auto" />
+          <div className="w-10 h-10 border-3 border-[#DA7735]/20 border-t-[#DA7735] rounded-full animate-spin mx-auto" />
         </div>
       }
     >
