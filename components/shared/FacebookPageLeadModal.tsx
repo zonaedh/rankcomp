@@ -12,7 +12,9 @@ import {
   Sparkles,
   ExternalLink,
   CheckCircle2,
+  Share2,
 } from "lucide-react";
+import { detectSocialPageUrl } from "@/lib/services/urlValidator";
 
 interface FacebookPageLeadModalProps {
   isOpen: boolean;
@@ -31,10 +33,17 @@ export default function FacebookPageLeadModal({
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  const pageHandle = facebookUrlOrHandle
-    .replace(/^https?:\/\/(www\.)?(facebook\.com|fb\.com)\//i, "")
-    .replace(/\/.*$/, "")
-    .trim();
+  const socialInfo = detectSocialPageUrl(facebookUrlOrHandle) || {
+    isSocialPage: true,
+    platform: "facebook" as const,
+    platformName: "Facebook",
+    handle: facebookUrlOrHandle.replace(/^(https?:\/\/)?(www\.)?/, "").replace(/\/.*$/, ""),
+    normalizedUrl: facebookUrlOrHandle,
+    adLibraryName: "Meta Ad Library",
+    externalArchiveUrl: `https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q=${encodeURIComponent(
+      facebookUrlOrHandle
+    )}`,
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,8 +62,9 @@ export default function FacebookPageLeadModal({
         body: JSON.stringify({
           email: email.trim(),
           name: name.trim() || undefined,
-          domain: `facebook.com/${pageHandle}`,
-          source: "facebook_page_detector",
+          domain: `${socialInfo.platformName.toLowerCase()}.com/${socialInfo.handle}`,
+          platform: socialInfo.platform,
+          source: `${socialInfo.platform}_page_detector`,
         }),
       });
 
@@ -111,16 +121,16 @@ export default function FacebookPageLeadModal({
                 <div className="space-y-3">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#E7AD72]">
                     <Sparkles className="w-3.5 h-3.5 text-[#DA7735]" />
-                    <span>Exclusive Feature • Social Page Intelligence</span>
+                    <span>Exclusive VIP Feature • {socialInfo.platformName} Intelligence</span>
                   </div>
 
                   <h2 className="text-xl sm:text-2xl font-extrabold font-heading text-[var(--text-primary)] leading-snug">
-                    Direct Facebook Page Dossier:{" "}
-                    <span className="text-[#E7AD72] underline decoration-[#DA7735]/40">{pageHandle}</span>
+                    Direct {socialInfo.platformName} Dossier:{" "}
+                    <span className="text-[#E7AD72] underline decoration-[#DA7735]/40">{socialInfo.handle}</span>
                   </h2>
 
                   <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                    You entered a direct social page link (<code>facebook.com/{pageHandle}</code>). We are aggregating all live ad creatives, copy angles, and engagement telemetry into a bespoke dossier.
+                    You entered a direct {socialInfo.platformName} link (<code>{socialInfo.platformName.toLowerCase()}.com/{socialInfo.handle}</code>). We are aggregating all active ad creatives, copywriting angles, and engagement telemetry into a bespoke dossier.
                   </p>
                 </div>
 
@@ -134,15 +144,15 @@ export default function FacebookPageLeadModal({
                   <ul className="space-y-2 pt-1 text-[var(--text-secondary)]">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                      <span><strong>Complete Active Meta Ads Archive:</strong> Every active video, carousel, and image creative.</span>
+                      <span><strong>Complete Active {socialInfo.platformName} Creatives:</strong> All active videos, carousels, and image ads currently running.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                      <span><strong>Copywriting Hooks & Themes:</strong> Head-to-head analysis of discount codes and angles.</span>
+                      <span><strong>Copywriting Hooks & Angles:</strong> Breakdown of high-converting offers and discount strategies.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                      <span><strong>90-Day Attack Plan:</strong> 3-step action roadmap to outconvert their campaigns.</span>
+                      <span><strong>90-Day Attack Plan:</strong> 3-step action roadmap to out-convert their paid campaigns.</span>
                     </li>
                   </ul>
                 </div>
@@ -197,7 +207,7 @@ export default function FacebookPageLeadModal({
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     ) : (
                       <>
-                        <span>Generate & Send Free Dossier</span>
+                        <span>Generate & Send Free {socialInfo.platformName} Dossier</span>
                         <Zap className="w-4 h-4" />
                       </>
                     )}
@@ -228,19 +238,19 @@ export default function FacebookPageLeadModal({
                   </h3>
                   <p className="text-xs sm:text-sm text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
                     We are synthesizing all active ads and copywriting signals for{" "}
-                    <strong className="text-[#E7AD72]">facebook.com/{pageHandle}</strong>. Your tailored 14-page PDF will arrive at{" "}
+                    <strong className="text-[#E7AD72]">{socialInfo.platformName} profile ({socialInfo.handle})</strong>. Your tailored 14-page PDF will arrive at{" "}
                     <strong className="text-[var(--text-primary)]">{email}</strong> within 5 minutes.
                   </p>
                 </div>
 
                 <div className="pt-3">
                   <a
-                    href={`https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&view_all_page_id=${encodeURIComponent(pageHandle)}`}
+                    href={socialInfo.externalArchiveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3 px-4 rounded-xl bg-[var(--highlight-bg)] hover:bg-[var(--highlight-border)] border border-[var(--highlight-border)] text-[var(--text-primary)] font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
                   >
-                    <span>View Official Meta Ad Library Archive</span>
+                    <span>View Official {socialInfo.adLibraryName}</span>
                     <ExternalLink className="w-3.5 h-3.5 text-[#DA7735]" />
                   </a>
                 </div>

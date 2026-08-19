@@ -11,8 +11,7 @@
 2. **Google Ads Visibility**: Search network bidding presence, keyword targeting signals, and conversion tag detection (GTM, Google Ads Tag).
 3. **PageSpeed & Web Vitals Telemetry**: Lighthouse Core Web Vitals (`FCP`, `LCP`, `CLS`) for both Mobile and Desktop devices.
 4. **Plain-English AI Strategic Playbook**: Practical, jargon-free competitor analysis featuring Est. Monthly Opportunity ($), 2-Column Reality Check (What They Do Well vs. Where They Lose Money), 7-Day Quick Attack, Copy-Paste Ready Ad Hook, and 3-Step Action Roadmap generated via Groq AI Cloud (Primary) with Google Gemini Flash fallback.
-5. **High-Converting Lead Magnet Engine**: Free 18-page PDF dossier unlock form that captures qualified business leads directly into `/api/lead` and logs to `data/leads.json`.
-6. **Exclusive VIP Facebook Page Auto-Detector**: Intercepts direct social page links (e.g. `facebook.com/brandname`) with a VIP modal capturing leads for tailored social dossier delivery.
+6. **Exclusive VIP Multi-Social Profile Auto-Detector**: Intercepts direct social links across **Facebook & fb.com**, **TikTok (`tiktok.com`)**, **X / Twitter (`x.com`, `twitter.com`)**, **Pinterest (`pinterest.com`)**, and **LinkedIn (`linkedin.com`)** with a tailored VIP modal capturing leads for platform-specific intelligence dossiers.
 
 ---
 

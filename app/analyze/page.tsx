@@ -7,32 +7,35 @@ import { motion } from "framer-motion";
 import { Globe, AlertTriangle, RefreshCw, ArrowLeft, Sparkles, ShieldCheck, Lock, Mail, User, CheckCircle2, ExternalLink, ArrowRight } from "lucide-react";
 import ProgressStep, { StepState } from "@/components/shared/ProgressStep";
 import { formatDomain } from "@/lib/utils";
-import { isFacebookPageUrl, extractFacebookPageHandle } from "@/lib/services/urlValidator";
+import { detectSocialPageUrl } from "@/lib/services/urlValidator";
 
 function AnalyzeContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const rawDomain = searchParams.get("domain") || "strideapparel.com";
-  const isFbPage = isFacebookPageUrl(rawDomain);
-  const fbPageHandle = isFbPage ? extractFacebookPageHandle(rawDomain) : "";
-  const domain = isFbPage ? `facebook.com/${fbPageHandle}` : formatDomain(rawDomain);
+  
+  const socialInfo = detectSocialPageUrl(rawDomain);
+  const isSocialPage = socialInfo !== null;
+  const domain = isSocialPage
+    ? `${socialInfo.platformName.toLowerCase()}.com/${socialInfo.handle}`
+    : formatDomain(rawDomain);
 
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [progress, setProgress] = useState(15);
   const [isCompleted, setIsCompleted] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  // Facebook Lead Form State if FB Page is detected
-  const [fbEmail, setFbEmail] = useState("");
-  const [fbName, setFbName] = useState("");
-  const [isFbSubmitting, setIsFbSubmitting] = useState(false);
-  const [isFbSuccess, setIsFbSuccess] = useState(false);
-  const [fbError, setFbError] = useState("");
+  // Social Profile Lead Form State if Social URL is detected
+  const [socialEmail, setSocialEmail] = useState("");
+  const [socialName, setSocialName] = useState("");
+  const [isSocialSubmitting, setIsSocialSubmitting] = useState(false);
+  const [isSocialSuccess, setIsSocialSuccess] = useState(false);
+  const [socialError, setSocialError] = useState("");
 
   const steps = [
     {
-      label: "Inspecting Meta Ads & Pixel...",
-      sublabel: "Querying active Facebook & Instagram ad creatives and tracking scripts",
+      label: "Inspecting Meta & Social Ads...",
+      sublabel: "Querying active ad creatives, formats, and tracking scripts",
     },
     {
       label: "Checking Google Ads conversion tags...",
@@ -48,40 +51,41 @@ function AnalyzeContent() {
     },
   ];
 
-  const handleFbSubmit = async (e: React.FormEvent) => {
+  const handleSocialSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fbEmail.trim() || !fbEmail.includes("@")) {
-      setFbError("Please enter a valid work email address");
+    if (!socialEmail.trim() || !socialEmail.includes("@")) {
+      setSocialError("Please enter a valid work email address");
       return;
     }
-    setIsFbSubmitting(true);
-    setFbError("");
+    setIsSocialSubmitting(true);
+    setSocialError("");
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: fbEmail.trim(),
-          name: fbName.trim() || undefined,
-          domain: `facebook.com/${fbPageHandle}`,
-          competitorName: fbPageHandle,
-          source: "facebook_page_exclusive_audit",
+          email: socialEmail.trim(),
+          name: socialName.trim() || undefined,
+          domain,
+          competitorName: socialInfo?.handle || domain,
+          platform: socialInfo?.platform || "social",
+          source: `${socialInfo?.platform || "social"}_page_exclusive_audit`,
         }),
       });
       if (res.ok) {
-        setIsFbSuccess(true);
+        setIsSocialSuccess(true);
       } else {
-        setFbError("Failed to schedule report. Please try again.");
+        setSocialError("Failed to schedule report. Please try again.");
       }
     } catch {
-      setFbError("Network error. Please check your connection.");
+      setSocialError("Network error. Please check your connection.");
     } finally {
-      setIsFbSubmitting(false);
+      setIsSocialSubmitting(false);
     }
   };
 
   const startAnalysis = async () => {
-    if (isFbPage) return;
+    if (isSocialPage) return;
 
     setErrorMsg(null);
     setCurrentStepIndex(0);
@@ -141,10 +145,10 @@ function AnalyzeContent() {
   };
 
   useEffect(() => {
-    if (!isFbPage) {
+    if (!isSocialPage) {
       startAnalysis();
     }
-  }, [domain, isFbPage]);
+  }, [domain, isSocialPage]);
 
   const getStepState = (idx: number): StepState => {
     if (errorMsg) return idx === currentStepIndex ? "pending" : idx < currentStepIndex ? "completed" : "pending";
@@ -152,10 +156,6 @@ function AnalyzeContent() {
     if (idx === currentStepIndex) return "active";
     return "pending";
   };
-
-  const fbAdLibraryUrl = `https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&q=${encodeURIComponent(
-    fbPageHandle
-  )}`;
 
   return (
     <div className="min-h-[85vh] flex items-center justify-center px-4 py-12 relative overflow-hidden bg-[var(--bg-base)] transition-colors duration-300">
@@ -168,24 +168,24 @@ function AnalyzeContent() {
         transition={{ duration: 0.4 }}
         className="w-full max-w-xl bg-[var(--surface-card)] rounded-3xl p-6 sm:p-10 shadow-xl border border-[var(--border-theme)] relative z-10"
       >
-        {isFbPage ? (
-          /* Facebook Page Exclusive Lead Capture State */
+        {isSocialPage && socialInfo ? (
+          /* Multi-Social Platform Exclusive Lead Capture State */
           <div className="space-y-6">
-            {!isFbSuccess ? (
+            {!isSocialSuccess ? (
               <>
                 <div className="text-center space-y-3">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#E7AD72]">
                     <Sparkles className="w-3.5 h-3.5 text-[#DA7735]" />
-                    <span>Exclusive VIP Feature • Social Page Intelligence</span>
+                    <span>Exclusive VIP Feature • {socialInfo.platformName} Intelligence</span>
                   </div>
 
                   <h1 className="text-2xl sm:text-3xl font-extrabold font-heading text-[var(--text-primary)]">
-                    Direct Facebook Page Dossier:{" "}
-                    <span className="text-[#E7AD72]">{fbPageHandle}</span>
+                    Direct {socialInfo.platformName} Dossier:{" "}
+                    <span className="text-[#E7AD72]">{socialInfo.handle}</span>
                   </h1>
 
                   <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed max-w-md mx-auto">
-                    You entered a direct social page link (<code>facebook.com/{fbPageHandle}</code>). Direct Facebook Page audits require dedicated deep aggregation to extract all live ad creatives, copywriting angles, and audience engagement telemetry.
+                    You entered a direct social link (<code>{socialInfo.platformName.toLowerCase()}.com/{socialInfo.handle}</code>). Direct social profile audits require dedicated deep aggregation to extract all active ad creatives, copywriting angles, and audience engagement telemetry.
                   </p>
                 </div>
 
@@ -199,7 +199,7 @@ function AnalyzeContent() {
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span>
-                        <strong className="text-[var(--text-primary)]">Full Meta Ad Creative Archive:</strong> Every active image, carousel, and video hook currently scaling.
+                        <strong className="text-[var(--text-primary)]">Full {socialInfo.platformName} Ad Creative Archive:</strong> Every active video, carousel, and image hook currently scaling.
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
@@ -211,13 +211,13 @@ function AnalyzeContent() {
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span>
-                        <strong className="text-[var(--text-primary)]">AI Copywriting Counter-Playbook:</strong> Proven copywriting formulas to out-convert this competitor.
+                        <strong className="text-[var(--text-primary)]">AI Copywriting Counter-Playbook:</strong> Proven formulas to out-convert this competitor.
                       </span>
                     </li>
                   </ul>
                 </div>
 
-                <form onSubmit={handleFbSubmit} className="space-y-3.5">
+                <form onSubmit={handleSocialSubmit} className="space-y-3.5">
                   <div className="space-y-1.5">
                     <label className="block text-xs font-semibold text-[var(--text-primary)]">
                       Work Email <span className="text-[#DA7735]">*</span>
@@ -228,10 +228,10 @@ function AnalyzeContent() {
                         type="email"
                         required
                         placeholder="you@company.com"
-                        value={fbEmail}
+                        value={socialEmail}
                         onChange={(e) => {
-                          setFbEmail(e.target.value);
-                          setFbError("");
+                          setSocialEmail(e.target.value);
+                          setSocialError("");
                         }}
                         className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#DA7735] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
                       />
@@ -247,30 +247,30 @@ function AnalyzeContent() {
                       <input
                         type="text"
                         placeholder="e.g. Sarah Jenkins"
-                        value={fbName}
-                        onChange={(e) => setFbName(e.target.value)}
+                        value={socialName}
+                        onChange={(e) => setSocialName(e.target.value)}
                         className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#DA7735] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
                       />
                     </div>
                   </div>
 
-                  {fbError && (
-                    <p className="text-xs font-semibold text-rose-400 pl-1">{fbError}</p>
+                  {socialError && (
+                    <p className="text-xs font-semibold text-rose-400 pl-1">{socialError}</p>
                   )}
 
                   <button
                     type="submit"
-                    disabled={isFbSubmitting}
+                    disabled={isSocialSubmitting}
                     className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-[#DA7735] hover:bg-[#CC602A] shadow-md shadow-[#DA7735]/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
-                    {isFbSubmitting ? (
+                    {isSocialSubmitting ? (
                       <>
                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        <span>Aggregating Social Dossier...</span>
+                        <span>Aggregating {socialInfo.platformName} Dossier...</span>
                       </>
                     ) : (
                       <>
-                        <span>Generate & Email Free Facebook Dossier</span>
+                        <span>Generate & Email Free {socialInfo.platformName} Dossier</span>
                         <ArrowRight className="w-4 h-4" />
                       </>
                     )}
@@ -298,19 +298,19 @@ function AnalyzeContent() {
                   </h2>
                   <p className="text-sm text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
                     We are synthesizing the full social intelligence audit for{" "}
-                    <strong className="text-[#E7AD72]">facebook.com/{fbPageHandle}</strong>. Your tailored 14-page PDF will arrive at{" "}
-                    <strong className="text-[var(--text-primary)]">{fbEmail}</strong> in a few minutes.
+                    <strong className="text-[#E7AD72]">{socialInfo.platformName} profile ({socialInfo.handle})</strong>. Your tailored 14-page PDF will arrive at{" "}
+                    <strong className="text-[var(--text-primary)]">{socialEmail}</strong> in a few minutes.
                   </p>
                 </div>
 
                 <div className="pt-3 space-y-2.5">
                   <a
-                    href={fbAdLibraryUrl}
+                    href={socialInfo.externalArchiveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3 px-4 rounded-xl bg-[var(--highlight-bg)] hover:bg-[var(--highlight-border)] border border-[var(--highlight-border)] text-[var(--text-primary)] font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
                   >
-                    <span>Open {fbPageHandle} in Meta Ad Library Right Now</span>
+                    <span>Open {socialInfo.platformName} in Official {socialInfo.adLibraryName}</span>
                     <ExternalLink className="w-3.5 h-3.5 text-[#DA7735]" />
                   </a>
 

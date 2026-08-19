@@ -19,11 +19,11 @@ export default function HeroSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputUrl.trim()) {
-      setError("Please enter a competitor website or Facebook page link");
+      setError("Please enter a competitor website or social profile link (Facebook, TikTok, X, LinkedIn, Pinterest)");
       return;
     }
 
-    // Auto-detect Facebook Page Links and trigger Exclusive VIP Lead Magnet
+    // Auto-detect Social Page Links (Facebook, TikTok, X, Pinterest, LinkedIn) and trigger Exclusive VIP Lead Magnet
     if (isFacebookPageUrl(inputUrl)) {
       setFbTargetUrl(inputUrl.trim());
       setIsFbModalOpen(true);
@@ -84,7 +84,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-base sm:text-lg lg:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed font-sans">
-              Find out what ads your competitors run on Facebook & Google, check how fast their website loads, and get simple AI tips to win more customers.
+              Find out what ads your competitors run on Facebook, TikTok, Google & LinkedIn, check how fast their website loads, and get simple AI tips to win more customers.
             </p>
           </motion.div>
 
@@ -105,7 +105,7 @@ export default function HeroSection() {
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--text-subtle)]" />
                   <input
                     type="text"
-                    placeholder="Enter competitor website (e.g. daraz.com.bd or facebook.com/page)..."
+                    placeholder="Enter website or social link (e.g. daraz.com.bd, tiktok.com/@brand, x.com/brand)..."
                     value={inputUrl}
                     onChange={(e) => {
                       setInputUrl(e.target.value);
