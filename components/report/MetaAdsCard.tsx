@@ -1,4 +1,4 @@
-import { Megaphone, Layers, ShieldCheck } from "lucide-react";
+import { Megaphone, Layers, ShieldCheck, ExternalLink } from "lucide-react";
 import ResultCard from "./ResultCard";
 import StatusBadge from "./StatusBadge";
 import { ProductionCompetitorReport } from "@/lib/services/reportAggregator";
@@ -109,6 +109,24 @@ export default function MetaAdsCard({ metaAds, delay = 0.1 }: MetaAdsCardProps) 
             <p className="text-xs text-[var(--text-secondary)] italic leading-relaxed">
               &ldquo;{metaAds.adCopySample}&rdquo;
             </p>
+          </div>
+        )}
+
+        {/* Direct Link to Official Meta Ad Library */}
+        {metaAds.adLibraryUrl && (
+          <div className="pt-1">
+            <a
+              href={metaAds.adLibraryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 px-3.5 rounded-xl bg-[var(--surface-subtle)] hover:bg-[var(--highlight-bg)] border border-[var(--border-theme)] hover:border-[var(--highlight-border)] text-xs font-bold text-[var(--text-primary)] hover:text-[#E7AD72] flex items-center justify-between transition-all group cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                <Megaphone className="w-3.5 h-3.5 text-[#DA7735]" />
+                <span>Open in Official Meta Ad Library</span>
+              </span>
+              <ExternalLink className="w-3.5 h-3.5 text-[#DA7735] group-hover:translate-x-0.5 transition-transform" />
+            </a>
           </div>
         )}
       </div>
