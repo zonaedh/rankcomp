@@ -39,8 +39,16 @@ export default function MetaAdsCard({ metaAds, delay = 0.1 }: MetaAdsCardProps) 
             <div className="text-[11px] font-bold text-[#DA7735] uppercase tracking-wider">
               {isRunning ? "Active Creatives" : "Ad Library Status"}
             </div>
-            <div className="text-2xl sm:text-3xl font-black font-heading text-[var(--text-primary)]">
-              {metaAds.activeCount}
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-2xl sm:text-3xl font-black font-heading text-[var(--text-primary)]">
+                {metaAds.activeCount}
+              </span>
+              {metaAds.isExactApiCount && isRunning && (
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Ad Library Sync
+                </span>
+              )}
             </div>
             <div className="text-xs text-[var(--text-secondary)] font-medium">
               {isRunning ? "Live Ad Variations" : "Zero Live Creatives"}
