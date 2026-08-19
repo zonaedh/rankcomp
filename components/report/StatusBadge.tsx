@@ -16,8 +16,8 @@ export default function StatusBadge({
 }: StatusBadgeProps) {
   const configs = {
     running: {
-      bg: "bg-[var(--highlight-bg)] text-[#F0511F] border-[var(--highlight-border)]",
-      dot: "bg-[#F0511F]",
+      bg: "bg-[var(--highlight-bg)] text-[#E06859] border-[var(--highlight-border)]",
+      dot: "bg-[#E06859]",
       icon: CheckCircle2,
       defaultText: "Active / Running",
     },
@@ -28,20 +28,20 @@ export default function StatusBadge({
       defaultText: "Not Found / Inactive",
     },
     good: {
-      bg: "bg-[var(--highlight-bg)] text-[#F0511F] border-[var(--highlight-border)]",
-      dot: "bg-[#F0511F]",
+      bg: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
+      dot: "bg-emerald-500",
       icon: CheckCircle2,
       defaultText: "Optimal Score",
     },
     warning: {
-      bg: "bg-amber-500/10 text-amber-500 border-amber-500/30",
+      bg: "bg-amber-500/10 text-amber-400 border-amber-500/30",
       dot: "bg-amber-500",
       icon: AlertTriangle,
       defaultText: "Needs Attention",
     },
     optimal: {
-      bg: "bg-[var(--highlight-bg)] text-[#FBCAAD] border-[var(--highlight-border)]",
-      dot: "bg-[#F0511F]",
+      bg: "bg-[var(--highlight-bg)] text-[#FDA4AF] border-[var(--highlight-border)]",
+      dot: "bg-[#E06859]",
       icon: Sparkles,
       defaultText: "High Impact",
     },

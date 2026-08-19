@@ -20,21 +20,21 @@ export default function GaugeScore({
   const getRating = (s: number) => {
     if (s >= 80)
       return {
-        color: "#F0511F",
-        textClass: "text-[#F0511F]",
-        bgClass: "bg-[var(--highlight-bg)] border-[var(--highlight-border)]",
+        color: "#10B981",
+        textClass: "text-emerald-400",
+        bgClass: "bg-emerald-500/10 border-emerald-500/30",
         label: "Fast",
       };
     if (s >= 60)
       return {
-        color: "#F58458",
-        textClass: "text-[#F58458]",
-        bgClass: "bg-[var(--highlight-bg)] border-[var(--highlight-border)]",
+        color: "#F59E0B",
+        textClass: "text-amber-400",
+        bgClass: "bg-amber-500/10 border-amber-500/30",
         label: "Average",
       };
     return {
-      color: "#E23814",
-      textClass: "text-rose-500",
+      color: "#E06859",
+      textClass: "text-rose-400",
       bgClass: "bg-rose-500/10 border-rose-500/30",
       label: "Slow",
     };
@@ -81,9 +81,9 @@ export default function GaugeScore({
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--text-primary)]">
           {device === "mobile" ? (
-            <Smartphone className="w-3.5 h-3.5 text-[#F0511F]" />
+            <Smartphone className="w-3.5 h-3.5 text-[#E06859]" />
           ) : (
-            <Monitor className="w-3.5 h-3.5 text-[#F0511F]" />
+            <Monitor className="w-3.5 h-3.5 text-[#E06859]" />
           )}
           <span>{device === "mobile" ? "Mobile Performance" : "Desktop Performance"}</span>
         </div>

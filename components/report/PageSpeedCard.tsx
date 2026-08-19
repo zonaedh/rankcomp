@@ -20,7 +20,7 @@ export default function PageSpeedCard({
       title="PageSpeed & Web Vitals"
       subtitle="Google Lighthouse benchmark metrics"
       delay={delay}
-      icon={<Gauge className="w-5 h-5 text-[#F0511F]" />}
+      icon={<Gauge className="w-5 h-5 text-[#E06859]" />}
       badge={
         <StatusBadge
           status={isGood ? "good" : "warning"}
@@ -39,7 +39,7 @@ export default function PageSpeedCard({
         <div className="p-4 rounded-2xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] text-xs space-y-3">
           <div className="flex items-center justify-between text-[11px] font-bold text-[var(--text-secondary)] uppercase tracking-wider">
             <div className="flex items-center gap-1.5">
-              <Activity className="w-3.5 h-3.5 text-[#F0511F]" />
+              <Activity className="w-3.5 h-3.5 text-[#E06859]" />
               <span>Core Web Vitals Telemetry</span>
             </div>
             {pageSpeed.insightsUrl && (
@@ -47,7 +47,7 @@ export default function PageSpeedCard({
                 href={pageSpeed.insightsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 font-bold text-[#F0511F] hover:text-[#F58458] normal-case transition-colors text-xs"
+                className="inline-flex items-center gap-1 font-bold text-[#E06859] hover:text-[#FDA4AF] normal-case transition-colors text-xs"
               >
                 <span>Google Lighthouse Report</span>
                 <ExternalLink className="w-3 h-3" />

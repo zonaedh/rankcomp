@@ -38,6 +38,16 @@ export interface CompetitorReport {
     vulnerabilities: string[];
     executiveSummary: string;
     recommendedCounterStrategy: string;
+    opportunityValue?: string;
+    quickWin?: string;
+    adHookIdea?: string;
+    actionPlan?: {
+      step1_immediate: string;
+      step2_shortTerm: string;
+      step3_scale: string;
+    };
+    threatLevel?: "High Threat" | "Moderate Threat" | "Low Threat";
+    engineUsed?: "groq" | "gemini" | "openai" | "heuristic";
   };
   fullReportTeaser: {
     estimatedSeoKeywords: number;
@@ -83,17 +93,27 @@ export const PRESET_REPORTS: Record<string, CompetitorReport> = {
       status: "Needs Improvement",
     },
     aiSummary: {
-      headline: "Aggressive Meta Ad Scale with High Mobile Bounce Risk",
+      headline: "Aggressive Social Ads with High Mobile Checkout Loss",
+      opportunityValue: "$18,000 – $34,000 / mo",
+      quickWin: "Deploy a lightning-fast mobile landing page targeting their top hoodie and linen search terms.",
+      threatLevel: "Moderate Threat",
       strengths: [
-        "High-velocity creative testing on TikTok/Meta reels with 38+ concurrent ad variations.",
-        "Solid desktop conversion funnel and structured Schema markup on product pages.",
+        "Running 38+ active video and photo ads on Instagram & TikTok to constantly find new buyers.",
+        "Clean, attractive desktop shopping experience that makes products look premium.",
       ],
       vulnerabilities: [
-        "Mobile LCP of 2.8s causes potential 18-24% drop-off from paid social ad clicks.",
-        "No active branded bidding on Google Ads leaves brand keywords vulnerable to competitor conquesting.",
+        "Their website takes nearly 3 seconds to load on phones, causing roughly 18-24% of mobile ad clicks to leave before buying.",
+        "They are not defending their brand name on Google search, letting competitors show up above them.",
       ],
-      executiveSummary: "Stride Apparel dominates social discovery through lifestyle video ads but suffers from uncompressed mobile hero media that hurts checkout conversion rates. Their Google Ads focus is strictly non-brand shopping.",
-      recommendedCounterStrategy: "Launch targeted Google Search conquest campaigns on their top 5 search terms and capitalize on their mobile latency with a faster mobile checkout experience.",
+      executiveSummary: "Stride Apparel spends heavily on Instagram and TikTok ads to attract shoppers, but their slow mobile loading speed causes many visitors to bounce before buying. They also ignore Google Search ads, creating an easy opportunity to win over their searchers.",
+      recommendedCounterStrategy: "Run Google Search ads on their popular product names and deliver a sub-second mobile checkout page that converts the customers they lose.",
+      adHookIdea: "Tired of slow shipping and heavy fabrics? Try our breathable organic linen — delivered in 48 hours.",
+      actionPlan: {
+        step1_immediate: "Day 1-7: Set up 3 exact-match Google Search ads on their top product keywords to grab ready-to-buy shoppers.",
+        step2_shortTerm: "Day 14-30: Build a mobile-optimized comparison landing page highlighting your faster checkout and free shipping.",
+        step3_scale: "Day 60+: Launch TikTok video testimonials targeting activewear shoppers looking for durable alternatives.",
+      },
+      engineUsed: "groq",
     },
     fullReportTeaser: {
       estimatedSeoKeywords: 4120,
@@ -137,16 +157,27 @@ export const PRESET_REPORTS: Record<string, CompetitorReport> = {
       status: "Good",
     },
     aiSummary: {
-      headline: "Benchmark Multi-Channel Brand Moat with High Ad Volume",
+      headline: "Dominant Fitness Giant with Room in Specialized Sub-Niches",
+      opportunityValue: "$120,000 – $220,000 / mo",
+      quickWin: "Target hyper-specific training communities (powerlifting, cross-training, pilates) where generic activewear feels too broad.",
+      threatLevel: "High Threat",
       strengths: [
-        "Over 110 active ad creatives refreshed weekly to minimize ad fatigue.",
-        "Near-instant 0.9s FCP performance on mobile optimized via headless Shopify architecture.",
+        "Over 110 active athlete-backed ads running constantly across Instagram, TikTok, and YouTube.",
+        "Super fast 0.9-second mobile loading speed that keeps checkout friction near zero.",
       ],
       vulnerabilities: [
-        "Heavy reliance on brand affinity leaves mid-market pricing niches open.",
+        "Broad mainstream positioning leaves specialized athletic communities feeling underserved.",
+        "Premium pricing creates an opening for high-durability direct alternatives.",
       ],
-      executiveSummary: "Gymshark maintains industry-leading paid media execution with high creative variety and sub-2s mobile loading. Counter-positioning should focus on niche sport communities or competitive price points.",
-      recommendedCounterStrategy: "Target specific sub-niches (e.g. powerlifting or pilates) where general activewear messaging lacks hyper-specialized relevance.",
+      executiveSummary: "Gymshark is an advertising powerhouse with rapid mobile speeds and massive social buzz. However, because they appeal to everyone, specialized lifters and athletes often look for tailored, purpose-built gear.",
+      recommendedCounterStrategy: "Do not compete head-on on broad gym terms; win by dominating specific athletic niches with hyper-focused ad messaging.",
+      adHookIdea: "Built specifically for heavy squats and deadlifts — reinforced seamless fabric that never tears.",
+      actionPlan: {
+        step1_immediate: "Day 1-7: Run high-intent Google Search ads on niche queries like 'heavyweight lifting shorts' and 'squat-proof seamless tights'.",
+        step2_shortTerm: "Day 14-30: Partner with 5 micro-coaches on Instagram to showcase side-by-side durability tests.",
+        step3_scale: "Day 60+: Build an automated retargeting funnel offering a first-order discount guarantee.",
+      },
+      engineUsed: "groq",
     },
     fullReportTeaser: {
       estimatedSeoKeywords: 28400,
@@ -190,17 +221,27 @@ export const PRESET_REPORTS: Record<string, CompetitorReport> = {
       status: "Good",
     },
     aiSummary: {
-      headline: "Heavy Social Ad Investment Leaving Search Traffic Open",
+      headline: "Massive Social Following but Zero Google Search Ads Active",
+      opportunityValue: "$25,000 – $50,000 / mo",
+      quickWin: "Launch Google Search comparison ads on 'Glossier dupes' and 'clean dewy makeup' to capture ready buyers.",
+      threatLevel: "Moderate Threat",
       strengths: [
-        "Unrivaled aesthetic consistency across 50+ Meta/IG video and carousel ads.",
-        "High viral community engagement and strong organic brand search volume.",
+        "Unbeatable visual aesthetic and viral community loyalty across 50+ Instagram and Pinterest ads.",
+        "Huge organic brand recognition that brings in consistent free traffic.",
       ],
       vulnerabilities: [
-        "Completely missing non-brand Google search advertising, yielding high-intent searchers to competitors.",
-        "Mobile product pages load third-party review widgets slowly.",
+        "Zero active Google Search ads, allowing competitors to easily bid on their product names and steal buyers.",
+        "Their mobile product pages load third-party review widgets slowly.",
       ],
-      executiveSummary: "Glossier drives massive social demand but leaves significant Google Search intent unprotected. Competitors can capture high-converting shoppers searching for generic skincare equivalents.",
+      executiveSummary: "Glossier has built enormous social demand through aesthetic video ads, but they completely ignore Google Search ads. Competitors can easily capture shoppers searching for clean beauty alternatives.",
       recommendedCounterStrategy: "Run Google Search comparison ads targeting 'Glossier alternatives' and 'best cruelty-free tint' to capture uncaptured search intent.",
+      adHookIdea: "Love the dewy skin look but want longer-lasting hydration? Meet the clean skincare formula 1,200+ beauty lovers switched to.",
+      actionPlan: {
+        step1_immediate: "Day 1-7: Launch Google Search ads targeting 'Glossier alternatives' and 'best clean lip balm' with instant checkout.",
+        step2_shortTerm: "Day 14-30: Create before/after comparison Reels demonstrating all-day wear and clean ingredients.",
+        step3_scale: "Day 60+: Set up an automated bundle offer to increase average order value from search traffic.",
+      },
+      engineUsed: "groq",
     },
     fullReportTeaser: {
       estimatedSeoKeywords: 12800,

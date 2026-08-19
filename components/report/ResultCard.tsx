@@ -25,23 +25,23 @@ export default function ResultCard({
 }: ResultCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay, ease: "easeOut" }}
+      transition={{ duration: 0.35, delay, ease: "easeOut" }}
       className={cn(
-        "bg-[var(--surface-card)] rounded-2xl border border-[var(--border-theme)] p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-[#F0511F]/50 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group",
+        "bg-[var(--surface-card)] rounded-2xl border border-[var(--border-theme)] p-6 sm:p-7 shadow-xs hover:shadow-xl hover:shadow-black/40 hover:border-[var(--border-hover)] transition-all duration-300 flex flex-col justify-between relative overflow-hidden group",
         className
       )}
     >
-      {/* Subtle top card accent highlight in Coral */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#F0511F]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      {/* Subtle top card accent highlight */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--border-accent)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       <div>
         {/* Card Header */}
         <div className="flex items-start justify-between gap-3 mb-5">
           <div className="flex items-center gap-3">
             {icon && (
-              <div className="w-10 h-10 rounded-xl bg-[var(--surface)] border border-[var(--border-theme)] flex items-center justify-center text-[#F0511F] shrink-0 group-hover:scale-105 group-hover:border-[#F0511F]/50 group-hover:bg-[var(--highlight-bg)] transition-all">
+              <div className="w-10 h-10 rounded-xl bg-[var(--surface)] border border-[var(--border-theme)] flex items-center justify-center text-[#E06859] shrink-0 group-hover:scale-105 group-hover:border-[var(--border-accent)] group-hover:bg-[var(--highlight-bg)] transition-all duration-200">
                 {icon}
               </div>
             )}

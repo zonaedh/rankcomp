@@ -159,8 +159,8 @@ function AnalyzeContent() {
 
   return (
     <div className="min-h-[85vh] flex items-center justify-center px-4 py-12 relative overflow-hidden bg-[var(--bg-base)] transition-colors duration-300">
-      {/* Ambient background glow in Coral */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#781E16]/15 via-[#F0511F]/15 to-transparent rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[var(--highlight-bg)] to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.96, y: 15 }}
@@ -174,14 +174,14 @@ function AnalyzeContent() {
             {!isFbSuccess ? (
               <>
                 <div className="text-center space-y-3">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#F0511F]">
-                    <Sparkles className="w-3.5 h-3.5 text-[#F0511F]" />
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#FDA4AF]">
+                    <Sparkles className="w-3.5 h-3.5 text-[#E06859]" />
                     <span>Exclusive VIP Feature • Social Page Intelligence</span>
                   </div>
 
                   <h1 className="text-2xl sm:text-3xl font-extrabold font-heading text-[var(--text-primary)]">
                     Direct Facebook Page Dossier:{" "}
-                    <span className="text-[#F0511F]">{fbPageHandle}</span>
+                    <span className="text-[#FDA4AF]">{fbPageHandle}</span>
                   </h1>
 
                   <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed max-w-md mx-auto">
@@ -190,26 +190,26 @@ function AnalyzeContent() {
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] space-y-2.5 text-xs text-[var(--text-primary)]">
-                  <div className="font-bold text-[#F0511F] flex items-center gap-1.5 uppercase text-[11px] tracking-wide">
-                    <Lock className="w-3.5 h-3.5 text-[#F0511F]" />
+                  <div className="font-bold text-[#E06859] flex items-center gap-1.5 uppercase text-[11px] tracking-wide">
+                    <Lock className="w-3.5 h-3.5 text-[#E06859]" />
                     <span>Included in this Free 14-Page Dossier:</span>
                   </div>
 
                   <ul className="space-y-2 pt-1 text-[var(--text-secondary)]">
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#F0511F] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span>
                         <strong className="text-[var(--text-primary)]">Full Meta Ad Creative Archive:</strong> Every active image, carousel, and video hook currently scaling.
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#F0511F] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span>
                         <strong className="text-[var(--text-primary)]">Audience Engagement & Spend:</strong> Estimated monthly paid budget, posting velocity, and conversion funnel strategy.
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#F0511F] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span>
                         <strong className="text-[var(--text-primary)]">AI Copywriting Counter-Playbook:</strong> Proven copywriting formulas to out-convert this competitor.
                       </span>
@@ -220,7 +220,7 @@ function AnalyzeContent() {
                 <form onSubmit={handleFbSubmit} className="space-y-3.5">
                   <div className="space-y-1.5">
                     <label className="block text-xs font-semibold text-[var(--text-primary)]">
-                      Work Email <span className="text-[#F0511F]">*</span>
+                      Work Email <span className="text-[#E06859]">*</span>
                     </label>
                     <div className="relative">
                       <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-subtle)]" />
@@ -233,7 +233,7 @@ function AnalyzeContent() {
                           setFbEmail(e.target.value);
                           setFbError("");
                         }}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#F0511F] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#E06859] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
                       />
                     </div>
                   </div>
@@ -249,19 +249,19 @@ function AnalyzeContent() {
                         placeholder="e.g. Sarah Jenkins"
                         value={fbName}
                         onChange={(e) => setFbName(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#F0511F] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#E06859] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
                       />
                     </div>
                   </div>
 
                   {fbError && (
-                    <p className="text-xs font-semibold text-rose-500 pl-1">{fbError}</p>
+                    <p className="text-xs font-semibold text-rose-400 pl-1">{fbError}</p>
                   )}
 
                   <button
                     type="submit"
                     disabled={isFbSubmitting}
-                    className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-[#781E16] to-[#F0511F] hover:from-[#410C09] hover:to-[#E23814] shadow-md shadow-[#F0511F]/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-[#E06859] hover:bg-[#D4594A] shadow-md shadow-[#E06859]/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     {isFbSubmitting ? (
                       <>
@@ -279,7 +279,7 @@ function AnalyzeContent() {
                   <div className="text-center pt-2">
                     <Link
                       href="/"
-                      className="text-xs font-semibold text-[var(--text-secondary)] hover:text-[#F0511F] transition-colors"
+                      className="text-xs font-semibold text-[var(--text-secondary)] hover:text-[#FDA4AF] transition-colors"
                     >
                       ← Analyze a standard website domain instead
                     </Link>
@@ -288,7 +288,7 @@ function AnalyzeContent() {
               </>
             ) : (
               <div className="py-6 text-center space-y-5">
-                <div className="w-16 h-16 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] flex items-center justify-center mx-auto text-[#F0511F] shadow-md">
+                <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400 shadow-md">
                   <CheckCircle2 className="w-9 h-9" />
                 </div>
 
@@ -298,7 +298,7 @@ function AnalyzeContent() {
                   </h2>
                   <p className="text-sm text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
                     We are synthesizing the full social intelligence audit for{" "}
-                    <strong className="text-[#F0511F]">facebook.com/{fbPageHandle}</strong>. Your tailored 14-page PDF will arrive at{" "}
+                    <strong className="text-[#FDA4AF]">facebook.com/{fbPageHandle}</strong>. Your tailored 14-page PDF will arrive at{" "}
                     <strong className="text-[var(--text-primary)]">{fbEmail}</strong> in a few minutes.
                   </p>
                 </div>
@@ -308,10 +308,10 @@ function AnalyzeContent() {
                     href={fbAdLibraryUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-4 rounded-xl bg-[var(--highlight-bg)] hover:bg-[#F0511F]/20 border border-[var(--highlight-border)] text-[var(--text-primary)] font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-[var(--highlight-bg)] hover:bg-[var(--highlight-border)] border border-[var(--highlight-border)] text-[var(--text-primary)] font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
                   >
                     <span>Open {fbPageHandle} in Meta Ad Library Right Now</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#F0511F]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#E06859]" />
                   </a>
 
                   <Link
@@ -329,8 +329,8 @@ function AnalyzeContent() {
           <>
             {/* Top Header */}
             <div className="text-center space-y-3 mb-8">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#F0511F]">
-                <Globe className="w-3.5 h-3.5 text-[#F0511F]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#FDA4AF]">
+                <Globe className="w-3.5 h-3.5 text-[#E06859]" />
                 <span>Target: {domain}</span>
               </div>
 
@@ -350,18 +350,18 @@ function AnalyzeContent() {
             {/* Error Notification View */}
             {errorMsg ? (
               <div className="space-y-6">
-                <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-500 text-xs sm:text-sm space-y-2">
-                  <div className="flex items-center gap-2 font-bold text-rose-500">
-                    <AlertTriangle className="w-4 h-4 text-rose-500 shrink-0" />
+                <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs sm:text-sm space-y-2">
+                  <div className="flex items-center gap-2 font-bold text-rose-400">
+                    <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
                     <span>Scan Error</span>
                   </div>
-                  <p className="text-rose-400 leading-relaxed">{errorMsg}</p>
+                  <p className="text-rose-300 leading-relaxed">{errorMsg}</p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center gap-3">
                   <button
                     onClick={startAnalysis}
-                    className="w-full sm:flex-1 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-[#781E16] to-[#F0511F] hover:from-[#410C09] hover:to-[#E23814] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                    className="w-full sm:flex-1 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white bg-[#E06859] hover:bg-[#D4594A] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
                   >
                     <RefreshCw className="w-4 h-4" />
                     <span>Retry Scan</span>
@@ -369,7 +369,7 @@ function AnalyzeContent() {
 
                   <Link
                     href="/"
-                    className="w-full sm:w-auto py-3 px-4 rounded-xl font-semibold text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[#F0511F] bg-[var(--surface)] border border-[var(--border-theme)] transition-all flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto py-3 px-4 rounded-xl font-semibold text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[#FDA4AF] bg-[var(--surface)] border border-[var(--border-theme)] transition-all flex items-center justify-center gap-2"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     <span>Analyze Different Domain</span>
@@ -380,16 +380,16 @@ function AnalyzeContent() {
               <>
                 {/* Progress Bar */}
                 <div className="space-y-2 mb-8">
-                  <div className="flex items-center justify-between text-xs font-bold text-[#F0511F]">
+                  <div className="flex items-center justify-between text-xs font-bold text-[#FDA4AF]">
                     <span className="flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-[#F0511F] animate-pulse" />
+                      <Sparkles className="w-3.5 h-3.5 text-[#E06859] animate-pulse" />
                       <span>Real-Time Diagnostic Pipeline</span>
                     </span>
                     <span>{progress}%</span>
                   </div>
                   <div className="w-full h-2.5 bg-[var(--surface-subtle)] rounded-full overflow-hidden border border-[var(--border-theme)] p-0.5">
                     <motion.div
-                      className="h-full bg-gradient-to-r from-[#781E16] to-[#F0511F] rounded-full"
+                      className="h-full bg-gradient-to-r from-[#2A1715] to-[#E06859] rounded-full"
                       initial={{ width: "15%" }}
                       animate={{ width: `${progress}%` }}
                       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -412,7 +412,7 @@ function AnalyzeContent() {
 
                 {/* Footer Trust Signal */}
                 <div className="mt-8 pt-6 border-t border-[var(--border-theme)] flex items-center justify-center gap-2 text-center text-xs text-[var(--text-subtle)]">
-                  <ShieldCheck className="w-4 h-4 text-[#F0511F]" />
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   <span>Direct non-intrusive public telemetry inspection</span>
                 </div>
               </>
@@ -430,7 +430,7 @@ export default function AnalyzePage() {
       fallback={
         <div className="min-h-[80vh] flex items-center justify-center">
           <div className="text-center space-y-3">
-            <div className="w-10 h-10 border-3 border-[#F0511F]/20 border-t-[#F0511F] rounded-full animate-spin mx-auto" />
+            <div className="w-10 h-10 border-3 border-[#E06859]/20 border-t-[#E06859] rounded-full animate-spin mx-auto" />
             <p className="text-sm font-medium text-[var(--text-secondary)]">Initializing scanner...</p>
           </div>
         </div>

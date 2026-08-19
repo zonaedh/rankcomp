@@ -3,16 +3,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Sparkles,
-  Lock,
+  X,
   Mail,
   User,
-  CheckCircle2,
-  ExternalLink,
-  ArrowRight,
   ShieldCheck,
   Zap,
-  X,
+  Lock,
+  Sparkles,
+  ExternalLink,
+  CheckCircle2,
 } from "lucide-react";
 
 interface FacebookPageLeadModalProps {
@@ -33,24 +32,19 @@ export default function FacebookPageLeadModal({
   const [error, setError] = useState("");
 
   const pageHandle = facebookUrlOrHandle
-    .replace(/^(https?:\/\/)?(www\.)?(facebook\.com|fb\.com|fb\.me)\//i, "")
-    .replace(/\?.*$/, "")
+    .replace(/^https?:\/\/(www\.)?(facebook\.com|fb\.com)\//i, "")
     .replace(/\/.*$/, "")
-    .trim() || "Facebook Page";
-
-  const adLibraryUrl = `https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&q=${encodeURIComponent(
-    pageHandle
-  )}`;
+    .trim();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || !email.includes("@")) {
-      setError("Please enter a valid work email address");
+    if (!email || !email.includes("@")) {
+      setError("Please enter a valid business email address.");
       return;
     }
 
-    setIsSubmitting(true);
     setError("");
+    setIsSubmitting(true);
 
     try {
       const res = await fetch("/api/lead", {
@@ -60,20 +54,20 @@ export default function FacebookPageLeadModal({
           email: email.trim(),
           name: name.trim() || undefined,
           domain: `facebook.com/${pageHandle}`,
-          competitorName: pageHandle,
-          source: "facebook_page_exclusive_audit",
+          source: "facebook_page_detector",
         }),
       });
 
-      if (res.ok) {
-        setIsSuccess(true);
-      } else {
-        setError("Failed to schedule report. Please try again.");
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to submit lead request.");
       }
-    } catch {
-      setError("Network error. Please check your connection.");
-    } finally {
+
       setIsSubmitting(false);
+      setIsSuccess(true);
+    } catch (err: any) {
+      setIsSubmitting(false);
+      setError(err?.message || "Something went wrong. Please try again.");
     }
   };
 
@@ -81,25 +75,25 @@ export default function FacebookPageLeadModal({
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/75 backdrop-blur-md"
+          className="fixed inset-0 bg-black/80 backdrop-blur-md"
         />
 
         {/* Modal Content */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.94, y: 20 }}
+          initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.94, y: 20 }}
-          className="relative w-full max-w-xl rounded-3xl bg-[var(--surface-card)] border border-[var(--border-accent)] shadow-2xl shadow-[#F0511F]/20 overflow-hidden z-10 my-8"
+          exit={{ opacity: 0, scale: 0.95, y: 15 }}
+          className="relative w-full max-w-xl rounded-3xl bg-[var(--surface-card)] border border-[var(--border-theme)] shadow-2xl overflow-hidden z-10 my-8"
         >
           {/* Top glowing radiant bar */}
-          <div className="h-2 w-full bg-gradient-to-r from-[#781E16] via-[#F0511F] to-[#FBCAAD]" />
+          <div className="h-1.5 w-full bg-gradient-to-r from-transparent via-[var(--border-accent)] to-transparent" />
 
           {/* Close button */}
           <button
@@ -115,158 +109,140 @@ export default function FacebookPageLeadModal({
               <>
                 {/* Header with VIP Badge */}
                 <div className="space-y-3">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#F0511F]">
-                    <Sparkles className="w-3.5 h-3.5 text-[#F0511F]" />
-                    <span>Exclusive VIP Feature • Social Page Intelligence</span>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#FDA4AF]">
+                    <Sparkles className="w-3.5 h-3.5 text-[#E06859]" />
+                    <span>Exclusive Feature • Social Page Intelligence</span>
                   </div>
 
                   <h2 className="text-xl sm:text-2xl font-extrabold font-heading text-[var(--text-primary)] leading-snug">
                     Direct Facebook Page Dossier:{" "}
-                    <span className="text-[#F0511F] underline decoration-[var(--border-accent)]">{pageHandle}</span>
+                    <span className="text-[#FDA4AF] underline decoration-[#E06859]/40">{pageHandle}</span>
                   </h2>
 
                   <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                    You entered a direct social page link (<code>facebook.com/{pageHandle}</code>). Direct Facebook Page audits require dedicated deep aggregation to extract all live ad creatives, copywriting angles, and audience engagement telemetry.
+                    You entered a direct social page link (<code>facebook.com/{pageHandle}</code>). We are aggregating all live ad creatives, copy angles, and engagement telemetry into a bespoke dossier.
                   </p>
                 </div>
 
                 {/* Feature Highlights Card */}
                 <div className="p-4 rounded-2xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] space-y-2.5 text-xs text-[var(--text-primary)]">
-                  <div className="font-bold text-[#F0511F] flex items-center gap-1.5 uppercase text-[11px] tracking-wide">
-                    <Lock className="w-3.5 h-3.5 text-[#F0511F]" />
+                  <div className="font-bold text-[#E06859] flex items-center gap-1.5 uppercase text-[11px] tracking-wide">
+                    <Lock className="w-3.5 h-3.5 text-[#E06859]" />
                     <span>Included in this Free 14-Page Dossier:</span>
                   </div>
 
                   <ul className="space-y-2 pt-1 text-[var(--text-secondary)]">
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#F0511F] shrink-0 mt-0.5" />
-                      <span>
-                        <strong className="text-[var(--text-primary)]">Full Meta Ad Creative Archive:</strong> Every active image, carousel, and video hook currently scaling on Facebook & Instagram.
-                      </span>
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <span><strong>Complete Active Meta Ads Archive:</strong> Every active video, carousel, and image creative.</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#F0511F] shrink-0 mt-0.5" />
-                      <span>
-                        <strong className="text-[var(--text-primary)]">Audience Engagement & Spend:</strong> Estimated monthly paid budget, posting velocity, and conversion funnel strategy.
-                      </span>
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <span><strong>Copywriting Hooks & Themes:</strong> Head-to-head analysis of discount codes and angles.</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#F0511F] shrink-0 mt-0.5" />
-                      <span>
-                        <strong className="text-[var(--text-primary)]">AI Copywriting Counter-Playbook:</strong> Proven copywriting formulas to out-convert this competitor.
-                      </span>
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <span><strong>90-Day Attack Plan:</strong> 3-step action roadmap to outconvert their campaigns.</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-3.5">
-                  <div className="space-y-1.5">
-                    <label className="block text-xs font-semibold text-[var(--text-primary)]">
-                      Work Email <span className="text-[#F0511F]">*</span>
+                {/* Lead Form */}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-[var(--text-primary)] mb-1.5">
+                      Work Email <span className="text-[#E06859]">*</span>
                     </label>
                     <div className="relative">
                       <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-subtle)]" />
                       <input
                         type="email"
                         required
-                        placeholder="you@company.com"
+                        placeholder="founder@company.com"
                         value={email}
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                          setError("");
-                        }}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#F0511F] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#E06859] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label className="block text-xs font-semibold text-[var(--text-primary)]">
-                      Your Name / Brand (Optional)
+                  <div>
+                    <label className="block text-xs font-semibold text-[var(--text-primary)] mb-1.5">
+                      Your Name or Company (Optional)
                     </label>
                     <div className="relative">
                       <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-subtle)]" />
                       <input
                         type="text"
-                        placeholder="e.g. Sarah Jenkins"
+                        placeholder="John Doe"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#F0511F] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border-theme)] focus:border-[#E06859] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] font-medium"
                       />
                     </div>
                   </div>
 
                   {error && (
-                    <p className="text-xs font-semibold text-rose-500 pl-1">{error}</p>
+                    <p className="text-xs font-medium text-rose-400">
+                      {error}
+                    </p>
                   )}
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-[#781E16] to-[#F0511F] hover:from-[#410C09] hover:to-[#E23814] shadow-md shadow-[#F0511F]/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-[#E06859] hover:bg-[#D4594A] shadow-md shadow-[#E06859]/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     {isSubmitting ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        <span>Aggregating Social Dossier...</span>
-                      </>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     ) : (
                       <>
-                        <span>Generate & Email Free Facebook Dossier</span>
-                        <ArrowRight className="w-4 h-4" />
+                        <span>Generate & Send Free Dossier</span>
+                        <Zap className="w-4 h-4" />
                       </>
                     )}
                   </button>
 
-                  <div className="flex items-center justify-center gap-4 text-[11px] text-[var(--text-secondary)] pt-1">
+                  <div className="flex items-center justify-center gap-4 text-[11px] text-[var(--text-subtle)] pt-1">
                     <span className="flex items-center gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#F0511F]" />
-                      <span>100% Confidential</span>
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                      100% Confidential
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
-                      <Zap className="w-3.5 h-3.5 text-[#F0511F]" />
-                      <span>Instant PDF Delivery</span>
+                      <Zap className="w-3.5 h-3.5 text-[#E06859]" />
+                      Delivered in 5 Mins
                     </span>
                   </div>
                 </form>
               </>
             ) : (
-              /* Success State */
-              <div className="py-6 text-center space-y-5">
-                <div className="w-16 h-16 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] flex items-center justify-center mx-auto text-[#F0511F] shadow-md">
+              <div className="py-6 text-center space-y-4">
+                <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400 shadow-md">
                   <CheckCircle2 className="w-9 h-9" />
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-extrabold font-heading text-[var(--text-primary)]">
-                    Dossier Generation In Progress!
+                  <h3 className="text-xl font-extrabold font-heading text-[var(--text-primary)]">
+                    Audit Queued for Delivery!
                   </h3>
-                  <p className="text-sm text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
-                    We are synthesizing the full social intelligence audit for{" "}
-                    <strong className="text-[#F0511F]">facebook.com/{pageHandle}</strong>. Your tailored 14-page PDF will arrive at{" "}
-                    <strong className="text-[var(--text-primary)]">{email}</strong> in a few minutes.
+                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
+                    We are synthesizing all active ads and copywriting signals for{" "}
+                    <strong className="text-[#FDA4AF]">facebook.com/{pageHandle}</strong>. Your tailored 14-page PDF will arrive at{" "}
+                    <strong className="text-[var(--text-primary)]">{email}</strong> within 5 minutes.
                   </p>
                 </div>
 
-                <div className="pt-3 space-y-2.5">
+                <div className="pt-3">
                   <a
-                    href={adLibraryUrl}
+                    href={`https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&view_all_page_id=${encodeURIComponent(pageHandle)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-4 rounded-xl bg-[var(--highlight-bg)] hover:bg-[#F0511F]/20 border border-[var(--highlight-border)] text-[var(--text-primary)] font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-[var(--highlight-bg)] hover:bg-[var(--highlight-border)] border border-[var(--highlight-border)] text-[var(--text-primary)] font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
                   >
-                    <span>Open {pageHandle} in Meta Ad Library Right Now</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#F0511F]" />
+                    <span>View Official Meta Ad Library Archive</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#E06859]" />
                   </a>
-
-                  <button
-                    onClick={onClose}
-                    className="w-full py-2.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
-                  >
-                    Done / Return to Home
-                  </button>
                 </div>
               </div>
             )}

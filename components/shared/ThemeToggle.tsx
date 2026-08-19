@@ -36,8 +36,8 @@ export default function ThemeToggle({ className = "", showLabel = false }: Theme
       title={`Switch to ${isDark ? "Light" : "Dark"} mode`}
       className={`relative inline-flex items-center gap-2 p-1.5 rounded-xl transition-all duration-200 cursor-pointer ${
         isDark
-          ? "bg-[#181412] hover:bg-[#221B17] border border-white/10 text-[#FBCAAD] hover:border-[#F0511F]/40 shadow-xs"
-          : "bg-white hover:bg-[#FEF4EE] border border-[#F3E6DF] text-[#781E16] hover:border-[#FBCAAD] shadow-xs"
+          ? "bg-[#141419] hover:bg-[#1A1A22] border border-white/10 text-[#FDA4AF] hover:border-[#E06859]/40 shadow-xs"
+          : "bg-white hover:bg-[#FDF6F5] border border-[#E5E5EB] text-[#A4382F] hover:border-[#E06859]/30 shadow-xs"
       } ${className}`}
     >
       <div className="relative w-6 h-6 flex items-center justify-center">
@@ -51,7 +51,7 @@ export default function ThemeToggle({ className = "", showLabel = false }: Theme
           transition={{ duration: 0.2 }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <Moon className="w-4 h-4 text-[#F58458]" />
+          <Moon className="w-4 h-4 text-[#FDA4AF]" />
         </motion.div>
 
         <motion.div
@@ -59,12 +59,12 @@ export default function ThemeToggle({ className = "", showLabel = false }: Theme
           animate={{
             scale: isDark ? 0 : 1,
             rotate: isDark ? -90 : 0,
-            opacity: isDark ? 0 : 1,
+            opacity: isDark ? 1 : 0,
           }}
           transition={{ duration: 0.2 }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <Sun className="w-4 h-4 text-[#F0511F]" />
+          <Sun className="w-4 h-4 text-[#E06859]" />
         </motion.div>
       </div>
 

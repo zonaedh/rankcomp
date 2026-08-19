@@ -27,6 +27,7 @@ export interface ProductionCompetitorReport extends CompetitorReport {
   aiSummary: CompetitorReport["aiSummary"] & {
     opportunityValue?: string;
     quickWin?: string;
+    engineUsed?: "groq" | "gemini" | "openai" | "heuristic";
   };
   techStack?: {
     cmsOrPlatform: string;
@@ -138,6 +139,10 @@ export async function generateProductionReport(inputDomain: string): Promise<Pro
       recommendedCounterStrategy: aiSummary.recommendedCounterStrategy,
       opportunityValue: aiSummary.opportunityValue,
       quickWin: aiSummary.quickWin,
+      adHookIdea: aiSummary.adHookIdea,
+      actionPlan: aiSummary.actionPlan,
+      threatLevel: aiSummary.threatLevel,
+      engineUsed: aiSummary.engineUsed,
     },
     fullReportTeaser: {
       estimatedSeoKeywords: baseKw,

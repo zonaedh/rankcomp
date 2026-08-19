@@ -7,6 +7,7 @@ export interface AppConfig {
   appUrl: string;
   hasPageSpeedKey: boolean;
   hasGeminiKey: boolean;
+  hasGroqKey: boolean;
   hasOpenAiKey: boolean;
   hasMetaToken: boolean;
 }
@@ -22,6 +23,7 @@ export function getAppConfig(): AppConfig {
     appUrl,
     hasPageSpeedKey: Boolean(process.env.PAGESPEED_API_KEY),
     hasGeminiKey: Boolean(process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY),
+    hasGroqKey: Boolean(process.env.GROQ_API_KEY),
     hasOpenAiKey: Boolean(process.env.OPENAI_API_KEY),
     hasMetaToken: Boolean(process.env.META_ACCESS_TOKEN),
   };

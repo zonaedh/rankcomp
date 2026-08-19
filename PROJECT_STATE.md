@@ -10,7 +10,7 @@
 1. **Meta Ads & Pixel Intelligence**: Live ad creatives count, format distribution, estimated monthly budget, active copy hooks, and 1-click deep links into the official Meta Ad Library archive.
 2. **Google Ads Visibility**: Search network bidding presence, keyword targeting signals, and conversion tag detection (GTM, Google Ads Tag).
 3. **PageSpeed & Web Vitals Telemetry**: Lighthouse Core Web Vitals (`FCP`, `LCP`, `CLS`) for both Mobile and Desktop devices.
-4. **AI Executive Strategy Synthesis**: Competitive SWOT summary, revenue opportunity estimation, and actionable counter-play generated via Google Gemini Flash AI.
+4. **Plain-English AI Strategic Playbook**: Practical, jargon-free competitor analysis featuring Est. Monthly Opportunity ($), 2-Column Reality Check (What They Do Well vs. Where They Lose Money), 7-Day Quick Attack, Copy-Paste Ready Ad Hook, and 3-Step Action Roadmap generated via Groq AI Cloud (Primary) with Google Gemini Flash fallback.
 5. **High-Converting Lead Magnet Engine**: Free 18-page PDF dossier unlock form that captures qualified business leads directly into `/api/lead` and logs to `data/leads.json`.
 6. **Exclusive VIP Facebook Page Auto-Detector**: Intercepts direct social page links (e.g. `facebook.com/brandname`) with a VIP modal capturing leads for tailored social dossier delivery.
 
@@ -22,27 +22,29 @@
 - **Styling**: Vanilla CSS Variables + Tailwind CSS utility classes
 - **Animations**: Framer Motion & canvas-confetti
 - **Icons**: Lucide React
-- **Theme**: **Default Dark Mode (`#0C0A09` Deep Obsidian)** with **Tactile Sun/Moon Theme Toggle** (`ThemeProvider` with `localStorage` persistence and anti-FOUC inline script in `app/layout.tsx`).
+- **Theme**: **Default Dark Mode (`#09090C` Deep Obsidian Zinc)** with **Tactile Sun/Moon Theme Toggle** (`ThemeProvider` with `localStorage` persistence and anti-FOUC inline script in `app/layout.tsx`).
 
 ### Design Tokens (`app/globals.css`):
 - **Dark Mode (Default)**:
-  - Base Background: `--bg-base: #0C0A09` (OLED Obsidian)
-  - Card Surface: `--surface-card: #161210` / `--surface: #14110F`
-  - Subtle Surface: `--surface-subtle: #1C1715`
-  - Primary Text: `--text-primary: #FBF9F8` (Crisp White)
-  - Secondary Text: `--text-secondary: #C4B5B0` (Warm Silver)
-  - Accent Coral: `#F0511F` / `#F58458` / `#781E16`
-  - Glass Borders: `--border-theme: rgba(255, 255, 255, 0.09)` & `--border-accent: rgba(240, 81, 31, 0.35)`
+  - Base Background: `--bg-base: #09090C` (Deep Obsidian Zinc)
+  - Card Surface: `--surface-card: #121217` / `--surface: #101014`
+  - Subtle Surface: `--surface-subtle: #16161D`
+  - Primary Text: `--text-primary: #F4F4F6` (Eye-Soothing Soft White)
+  - Secondary Text: `--text-secondary: #9494A0` (Muted Zinc)
+  - Accent Coral / Light Rose: `#E06859` (Soft Rose Coral) / `#F28F82` / `#FDA4AF` (Blush)
+  - Glass Borders: `--border-theme: rgba(255, 255, 255, 0.07)` & `--border-accent: rgba(224, 104, 89, 0.28)`
+  - Smooth Shadows: `--card-shadow: 0 4px 20px -2px rgba(0,0,0,0.4)`
 - **Light Mode**:
-  - Base Background: `--bg-base: #FAF8F6`
+  - Base Background: `--bg-base: #FAF9F9`
   - Card Surface: `--surface-card: #FFFFFF`
-  - Primary Text: `--text-primary: #1E1715`
+  - Primary Text: `--text-primary: #18181B`
 
 ---
 
 ## 3. Environment Variables (`.env.local`)
 - `PAGESPEED_API_KEY`: Google Cloud PageSpeed Insights v5 Key (`AIzaSyDuO7mZtfLaRndHsSjADVBZYxdrC9t5tmk`)
-- `GEMINI_API_KEY`: Google AI Studio Key for AI Summary synthesis (`AQ.Ab8RN6KW-82iur9LKCWdNbx0U4U2WVr6BYOPaGmbNpPpESLJOg`)
+- `GROQ_API_KEY`: Groq AI Cloud Key for ultra-fast Primary AI Intelligence (`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`)
+- `GEMINI_API_KEY`: Google AI Studio Key for Secondary AI Intelligence (`AQ.Ab8RN6KW-82iur9LKCWdNbx0U4U2WVr6BYOPaGmbNpPpESLJOg`)
 
 ---
 
@@ -60,9 +62,9 @@
 ---
 
 ## 5. Key Services & Logic
-- `lib/services/reportAggregator.ts`: Coordinates Site Scanner, Google PageSpeed, Meta Ads, and Gemini AI.
+- `lib/services/reportAggregator.ts`: Coordinates Site Scanner, Google PageSpeed, Meta Ads, and AI Strategy engines.
+- `lib/services/aiSummary.ts`: 4-tier resilient AI synthesis cascade (Groq LPU $\rightarrow$ Google Gemini Flash $\rightarrow$ OpenAI $\rightarrow$ Deterministic Heuristic).
 - `lib/services/metaAds.ts`: 3-tier multi-query waterfall (Brand Name $\rightarrow$ Domain Name $\rightarrow$ Social Handle) with strict e-commerce validation to eliminate false positives.
-- `lib/services/geminiService.ts`: Uses `@google/genai` with `gemini-flash-latest` model to generate structured SWOT and executive summaries.
 - `lib/services/siteScanner.ts`: Inspects client DOM for Facebook Pixel, Google Tag Manager, Google Ads conversion tags, schema markup, and technology stacks.
 - `lib/services/pageSpeed.ts`: Calls official Google Lighthouse API with fallback realistic heuristics.
 - `lib/services/urlValidator.ts`: Detects domains, clean URLs, and Facebook page URL patterns.

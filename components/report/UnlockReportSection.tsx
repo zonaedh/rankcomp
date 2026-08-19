@@ -2,7 +2,20 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, Lock, ArrowRight, Sparkles, Mail, Shield } from "lucide-react";
+import {
+  CheckCircle2,
+  Lock,
+  ArrowRight,
+  Sparkles,
+  Mail,
+  Shield,
+  Video,
+  User,
+  Phone,
+  Clock,
+  Award,
+  Zap,
+} from "lucide-react";
 import confetti from "canvas-confetti";
 import UnlockSuccessModal from "@/components/shared/UnlockSuccessModal";
 
@@ -12,37 +25,51 @@ interface UnlockReportSectionProps {
 
 export default function UnlockReportSection({ domain }: UnlockReportSectionProps) {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [error, setError] = useState("");
 
-  const checklistItems = [
+  const valueStack = [
     {
-      title: "Google Ads — full breakdown & creatives",
-      desc: "Every active search ad copy, landing page destination, and estimated keyword bid.",
+      title: "Full 18-Page In-Depth Competitor Dossier",
+      value: "$197 Value",
+      desc: "Complete Meta ad creative archive, Google Search keyword bidding strategies, SEO backlink profiles, and checkout friction drop-offs.",
+      icon: CheckCircle2,
+      iconColor: "text-emerald-400",
+      iconBg: "bg-emerald-500/20 border-emerald-500/40",
     },
     {
-      title: "Complete SEO Audit",
-      desc: "Top organic ranking keywords, backlinks profile, domain authority, and content gaps.",
+      title: "Private 30-Min 1:1 Live Strategy & Audit Consultation",
+      value: "$297 Value",
+      desc: "Private Zoom/Google Meet call with a 10+ Years Senior Full-Stack Marketing Manager to tear down this report and pinpoint where this competitor is bleeding revenue.",
+      icon: Video,
+      iconColor: "text-[#E06859]",
+      iconBg: "bg-[var(--highlight-bg)] border-[var(--highlight-border)]",
     },
     {
-      title: "Social Media Audit",
-      desc: "Engagement velocity, top viral reels/posts, posting schedule, and influencer mentions.",
+      title: "Custom 30-Day Customer Acquisition Attack Plan",
+      value: "Actionable",
+      desc: "Ready-to-launch ad hooks, target search keyword bids, and landing page angles designed specifically to win over their customers.",
+      icon: Zap,
+      iconColor: "text-amber-400",
+      iconBg: "bg-amber-500/20 border-amber-500/40",
     },
     {
-      title: "Full Business Inspection & Branding Gaps",
-      desc: "Checkout friction points, customer sentiment breakdown, and pricing vulnerabilities.",
-    },
-    {
-      title: "Strategic Growth Opportunities",
-      desc: "Actionable 90-day step-by-step roadmap to outrank and outconvert this competitor.",
+      title: "High-Converting Ad Copy & Creative Swipe File",
+      value: "Included",
+      desc: "Copy-paste headlines, hooks, and video angles battle-tested across $2M+ in profitable paid advertising spend.",
+      icon: Award,
+      iconColor: "text-[#FDA4AF]",
+      iconBg: "bg-[var(--highlight-bg)] border-[var(--highlight-border)]",
     },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes("@")) {
-      setError("Please enter a valid work email address");
+      setError("Please enter a valid business email address");
       return;
     }
     setError("");
@@ -52,7 +79,13 @@ export default function UnlockReportSection({ domain }: UnlockReportSectionProps
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), domain }),
+        body: JSON.stringify({
+          email: email.trim(),
+          name: name.trim() || undefined,
+          phone: phone.trim() || undefined,
+          domain,
+          source: "unlock_report_consultation_offer",
+        }),
       });
 
       if (!res.ok) {
@@ -60,13 +93,13 @@ export default function UnlockReportSection({ domain }: UnlockReportSectionProps
         throw new Error(data.error || "Unable to process request");
       }
 
-      // Trigger confetti celebration in Coral
+      // Trigger confetti celebration in soft rose & gold
       try {
         confetti({
-          particleCount: 80,
+          particleCount: 75,
           spread: 70,
           origin: { y: 0.6 },
-          colors: ["#781E16", "#952117", "#F0511F", "#F58458", "#FEF4EE"],
+          colors: ["#E06859", "#F28F82", "#FDA4AF", "#10B981", "#F59E0B"],
         });
       } catch {
         // safe fallback
@@ -76,7 +109,7 @@ export default function UnlockReportSection({ domain }: UnlockReportSectionProps
       setIsSuccessModalOpen(true);
     } catch (err: any) {
       setIsSubmitting(false);
-      setError(err?.message || "Failed to submit lead request. Please try again.");
+      setError(err?.message || "Failed to submit request. Please try again.");
     }
   };
 
@@ -84,73 +117,114 @@ export default function UnlockReportSection({ domain }: UnlockReportSectionProps
     <>
       <motion.section
         id="unlock-section"
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="relative bg-gradient-to-br from-[#781E16] via-[#952117] to-[#410C09] rounded-3xl p-8 sm:p-12 text-white shadow-2xl overflow-hidden mt-12 border-2 border-[#F0511F]/40"
+        transition={{ duration: 0.5 }}
+        className="relative bg-gradient-to-br from-[#121217] via-[#16161D] to-[#0E0E12] rounded-3xl p-6 sm:p-10 md:p-12 text-white shadow-2xl overflow-hidden mt-12 border border-white/10"
       >
-        {/* Subtle mesh background circles */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#F0511F]/25 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#F58458]/20 rounded-full blur-3xl pointer-events-none" />
+        {/* Subtle Ambient Radial Glow */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[var(--highlight-bg)] rounded-full blur-3xl pointer-events-none opacity-40" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left / Info Side */}
+          {/* Left Column: Irresistible Value Offer & Authority */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-[#FEF4EE]">
-              <Sparkles className="w-4 h-4 text-[#F58458]" />
-              <span>Full In-Depth Dossier (Free Instant Access)</span>
+            {/* Top VIP Offer Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--highlight-bg)] border border-[var(--highlight-border)] text-xs font-bold text-[#FDA4AF]">
+              <Sparkles className="w-4 h-4 text-[#E06859]" />
+              <span>FREE 18-PAGE DOSSIER + 30-MIN 1:1 STRATEGY CALL ($497 VALUE)</span>
             </div>
 
+            {/* Sales Pushy Headline */}
             <div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading tracking-tight leading-tight">
-                Unlock the Full Competitor Report for{" "}
-                <span className="text-[#F58458] underline decoration-[#F58458]/40 underline-offset-4">
+                Ready to Outrank, Outbid & Steal Customers From{" "}
+                <span className="text-[#FDA4AF] underline decoration-[#E06859]/50 underline-offset-4">
                   {domain}
                 </span>
+                ?
               </h2>
-              <p className="text-sm sm:text-base text-[#FDE6D7] mt-3 leading-relaxed">
-                Take this executive snapshot and turn it into an unfair competitive advantage. Get complete ad copy archives, SEO keyword rankings, and deep tactical breakdown.
+              <p className="text-sm sm:text-base text-zinc-300 mt-3 leading-relaxed">
+                Don’t just look at public numbers — turn this data into an unfair cash-flowing advantage. Claim the complete 18-page intelligence dossier <strong className="text-white">PLUS a complimentary 30-minute private 1:1 strategy consultation</strong> with a 10+ Years Senior Full-Stack Digital Marketing Manager.
               </p>
             </div>
 
-            {/* Checklist */}
-            <div className="space-y-3 pt-2">
-              {checklistItems.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#F0511F] flex items-center justify-center text-white shrink-0 mt-0.5 shadow-xs">
-                    <CheckCircle2 className="w-3.5 h-3.5 stroke-[3]" />
+            {/* Stacked Value Items */}
+            <div className="space-y-3.5 pt-1">
+              {valueStack.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="flex items-start gap-3.5 p-3 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-colors"
+                  >
+                    <div className={`w-7 h-7 rounded-xl ${item.iconBg} flex items-center justify-center ${item.iconColor} shrink-0 mt-0.5 shadow-xs`}>
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <h3 className="text-sm font-bold text-white font-heading">
+                          {item.title}
+                        </h3>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[var(--highlight-bg)] text-[#FDA4AF] border border-[var(--highlight-border)]">
+                          {item.value}
+                        </span>
+                      </div>
+                      <p className="text-xs text-zinc-400 mt-0.5 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-white">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-[#FDE6D7]">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
+            </div>
+
+            {/* Authority Proof Bar */}
+            <div className="p-3.5 rounded-2xl bg-[var(--highlight-bg)] border border-[var(--highlight-border)] flex items-center gap-3 text-xs text-zinc-300">
+              <div className="w-9 h-9 rounded-full bg-[#E06859] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
+                10+
+              </div>
+              <div className="min-w-0">
+                <span className="font-bold text-white block text-xs">
+                  Consultation Hosted by Senior Full-Stack Marketing Strategist
+                </span>
+                <span className="text-[11px] text-[#FDA4AF]">
+                  10+ Years Experience • $2M+ in Paid Ad Spend • 100% Free (Zero Sales Pitch, Pure Actionable Moves)
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Right / Lead Capture Box */}
+          {/* Right Column: High-Converting Consultation & Dossier Claim Box */}
           <div className="lg:col-span-5">
-            <div className="bg-[var(--surface-card)] rounded-3xl p-6 sm:p-8 text-[var(--text-primary)] shadow-2xl shadow-[#410C09]/50 border-2 border-[var(--border-accent)]">
-              <div className="text-center space-y-2 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-[var(--highlight-bg)] text-[#F0511F] mx-auto flex items-center justify-center mb-3 border border-[var(--highlight-border)] shadow-sm">
-                  <Lock className="w-6 h-6 text-[#F0511F]" />
+            <div className="bg-[var(--surface-card)] rounded-3xl p-6 sm:p-8 text-[var(--text-primary)] shadow-2xl border border-[var(--border-theme)] relative overflow-hidden">
+              {/* Top Accent Strip */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--border-accent)] to-transparent" />
+
+              <div className="text-center space-y-2 mb-5">
+                <div className="w-12 h-12 rounded-2xl bg-[var(--highlight-bg)] text-[#E06859] mx-auto flex items-center justify-center mb-2 border border-[var(--highlight-border)] shadow-sm">
+                  <Video className="w-6 h-6 text-[#E06859]" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold font-heading text-[var(--text-primary)]">
-                  Receive the Complete PDF
+                  Claim Your Free Dossier + 1:1 Call
                 </h3>
                 <p className="text-xs text-[var(--text-secondary)]">
-                  Where should we email your comprehensive 18-page dossier?
+                  Where should we email your complete 18-page report and private calendar invite?
                 </p>
+
+                {/* Scarcity / Urgency Pill */}
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/30 text-[11px] font-bold text-amber-400 mt-1">
+                  <Clock className="w-3 h-3" />
+                  <span>Only 4 Free Strategy Spots Available This Week</span>
+                </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3.5">
+                {/* Email Field */}
                 <div>
-                  <label htmlFor="lead-email" className="block text-xs font-semibold text-[var(--text-primary)] mb-1.5">
-                    Your Business Email
+                  <label htmlFor="lead-email" className="block text-xs font-semibold text-[var(--text-primary)] mb-1">
+                    Work Email <span className="text-[#E06859]">*</span>
                   </label>
                   <div className="relative">
                     <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-subtle)]" />
@@ -164,40 +238,79 @@ export default function UnlockReportSection({ domain }: UnlockReportSectionProps
                         setEmail(e.target.value);
                         setError("");
                       }}
-                      className="w-full pl-10 pr-4 py-3 bg-[var(--surface-subtle)] border-2 border-[var(--border-theme)] rounded-xl text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:border-[#F0511F] focus:bg-[var(--surface)] transition-all font-medium"
+                      className="w-full pl-10 pr-4 py-2.5 bg-[var(--surface-subtle)] border border-[var(--border-theme)] rounded-xl text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:border-[#E06859] focus:bg-[var(--surface)] transition-all font-medium"
                     />
                   </div>
-                  {error && (
-                    <p className="text-xs font-medium text-rose-500 mt-1.5">
-                      {error}
-                    </p>
-                  )}
                 </div>
 
+                {/* Name Field */}
+                <div>
+                  <label htmlFor="lead-name" className="block text-xs font-semibold text-[var(--text-primary)] mb-1">
+                    Your Name (Optional)
+                  </label>
+                  <div className="relative">
+                    <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-subtle)]" />
+                    <input
+                      id="lead-name"
+                      type="text"
+                      placeholder="e.g. Alex Morgan"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2.5 bg-[var(--surface-subtle)] border border-[var(--border-theme)] rounded-xl text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:border-[#E06859] focus:bg-[var(--surface)] transition-all font-medium"
+                    />
+                  </div>
+                </div>
+
+                {/* Phone / WhatsApp Field */}
+                <div>
+                  <label htmlFor="lead-phone" className="block text-xs font-semibold text-[var(--text-primary)] mb-1">
+                    WhatsApp / Phone (Optional for instant calendar booking)
+                  </label>
+                  <div className="relative">
+                    <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-subtle)]" />
+                    <input
+                      id="lead-phone"
+                      type="tel"
+                      placeholder="+1 (555) 000-0000"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2.5 bg-[var(--surface-subtle)] border border-[var(--border-theme)] rounded-xl text-sm text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:border-[#E06859] focus:bg-[var(--surface)] transition-all font-medium"
+                    />
+                  </div>
+                </div>
+
+                {error && (
+                  <p className="text-xs font-medium text-rose-400 mt-1">
+                    {error}
+                  </p>
+                )}
+
+                {/* High-Converting CTA Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-gradient-to-r from-[#781E16] to-[#F0511F] hover:from-[#410C09] hover:to-[#E23814] shadow-lg shadow-[#F0511F]/30 hover:shadow-xl transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-75"
+                  className="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-[#E06859] hover:bg-[#D4594A] shadow-lg shadow-[#E06859]/20 hover:shadow-xl transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-75 cta-pulse mt-2"
                 >
                   {isSubmitting ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   ) : (
                     <>
-                      <span>Get Full Report — Free</span>
+                      <span>Claim Free Dossier & Book 30-Min Call</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
                 </button>
 
-                <div className="flex items-center justify-center gap-4 text-[11px] text-[var(--text-secondary)] pt-1">
+                {/* Trust Badges */}
+                <div className="flex items-center justify-center gap-3 text-[11px] text-[var(--text-secondary)] pt-1 flex-wrap">
                   <span className="flex items-center gap-1">
-                    <Shield className="w-3 text-[#F0511F]" />
-                    Instant delivery
+                    <Shield className="w-3 h-3 text-emerald-400" />
+                    100% Free Forever
                   </span>
                   <span>•</span>
-                  <span>100% Free forever</span>
+                  <span>No Pitch Guarantee</span>
                   <span>•</span>
-                  <span>No credit card</span>
+                  <span>Instant PDF Delivery</span>
                 </div>
               </form>
             </div>
@@ -205,7 +318,7 @@ export default function UnlockReportSection({ domain }: UnlockReportSectionProps
         </div>
       </motion.section>
 
-      {/* Success Modal */}
+      {/* Success Modal with 1:1 Consultation Invite */}
       <UnlockSuccessModal
         isOpen={isSuccessModalOpen}
         onClose={() => setIsSuccessModalOpen(false)}
